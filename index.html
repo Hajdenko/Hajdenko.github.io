@@ -46,7 +46,7 @@
                         <img src="assets/logo_removebg.png" alt="" style="height: 3rem;">
                     </a>
                 </span>
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-7" href="#">hnlsmp.pro</a></span>
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-7" href="#">mc.hnlsmp.pro</a></span>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <div class="hamburger">
@@ -62,10 +62,12 @@
                     <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="rules.html">Pravidla</a>
                     </li></ul>
                 
-                <div class="navbar-buttons mbr-section-btn"><a class="btn btn-primary display-4" href="https://hnlsmp.pro" target="_blank"><span class=""></span>Připojit se&nbsp;</a></div>
+                <div class="navbar-buttons mbr-section-btn">
+                    <a id="navbar-button-join" class="btn btn-primary display-4" target="_blank"><span class=""></span>Připojit se&nbsp;</a>
+                </div>
 
                 <script>
-                    document.getElementById("myButton").addEventListener("click", function(event) {
+                    document.getElementById("navbar-button-join").addEventListener("click", function(event) {
                         event.preventDefault();
 
                         const button = this;

@@ -63,6 +63,28 @@
                     </li></ul>
                 
                 <div class="navbar-buttons mbr-section-btn"><a class="btn btn-primary display-4" href="https://hnlsmp.pro" target="_blank"><span class=""></span>Připojit se&nbsp;</a></div>
+
+                <script>
+                    document.getElementById("myButton").addEventListener("click", function(event) {
+                        event.preventDefault();
+
+                        const button = this;
+                        const originalText = 'Připojit se&nbsp;';
+            
+                        button.innerHTML = 'IP Zkopírována';
+
+                        const textToCopy = "mc.hnlsmp.pro";
+                        navigator.clipboard.writeText(textToCopy).then(() => {
+                            console.log('Success - Copied');
+                        }).catch(err => {
+                            console.error('Error copying text: ', err);
+                        });
+
+                        setTimeout(() => {
+                            button.innerHTML = originalText;
+                        }, 3000);
+                    });
+                </script>
             </div>
         </div>
     </nav>

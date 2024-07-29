@@ -1972,7 +1972,7 @@
                 mask-size: var(--mask-size,100%);
                 overflow: hidden;
                 pointer-events: var(--fill-layer-background-media-pointer-events);
-                position: absolute;
+                position: fixed;
                 top: 0;
                 width: 100%
             }
@@ -6860,6 +6860,73 @@
                 #comp-kd5px9q0_r_comp-kd5px9hr .comp-kd5px9q0_r_comp-kd5px9hr-overflow-wrapper::-webkit-scrollbar {
                     width: 0;
                     height: 0;
+                }
+
+                @media screen and (max-width: 750px) {
+                    #comp-lz6ulr5y {
+                        visibility:hidden;
+                    }
+                    #comp-lz6ulr5y_ {
+                        visibility:visible;
+                    }
+                }
+
+                @media screen and (min-width: 750px) {
+                    #comp-lz6ulr5y {
+                        visibility:visible;
+                    }
+                    #comp-lz6ulr5y_ {
+                        visibility:hidden;
+                    }
+                }
+
+                #comp-lz6ulr5y_ {
+                    min-height: 33.859375px;
+                    --l_display: unset;
+                    height: auto;
+                    width: max-content;
+                    top: calc(var(--is-sticky) * (var(--top) + var(--sticky-offset)));
+                    --comp-display: unset;
+                    align-self: start;
+                    justify-self: end;
+                    margin-top: 4.867218379446641%;
+                    margin-left: 0%;
+                    margin-bottom: 0%;
+                    margin-right: 2.533349802371541%;
+                    grid-area: 1/1/2/2;
+                    position: relative;
+                    --is-sticky: 0;
+                    --top: 0px;
+                }
+
+                .comp-lz6ulr5y_-container {
+                    box-sizing: border-box;
+                    padding-top: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-bottom: 0px;
+                    display: var(--l_display,var(--container-display));
+                    flex-direction: row;
+                    --container-layout-type: flex-container-layout;
+                    --container-display: flex;
+                }
+
+                #comp-lz6ulr5y_ {
+                    --brw: 0px;
+                    --brd: var(--color_15);
+                    --bg: var(--color_11);
+                    --rd: 0px;
+                    --shd: none;
+                    --gradient: none;
+                    --alpha-brd: 0;
+                    --alpha-bg: 0;
+                    --boxShadowToggleOn-shd: none;
+                    --static-spx: 0.1 * var(--one-unit);
+                    --bg-gradient: none;
+                }
+
+                #comp-lz6ulr5y {
+                    --shc-mutated-brightness: 128,128,128;
                 }
 
                 @media screen and (min-width: 320px) and (max-width: 750px) {

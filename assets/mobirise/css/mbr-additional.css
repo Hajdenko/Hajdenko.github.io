@@ -50,7 +50,7 @@ body {
   .display-1 {
     font-size: 3.36rem;
   }
-
+}
 @media (max-width: 768px) {
   .display-1 {
     font-size: 2.94rem;
@@ -1346,11 +1346,6 @@ a {
   padding-right: 1rem;
   padding-top: 0.3rem;
   text-align: center;
-}
-@media screen and (min-width: 750px) {
-  .content16 cid-tjqfD1HjQw {
-    visibility: hidden !important;
-  {
 }
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   .cid-tkbL8n4vab .navbar {

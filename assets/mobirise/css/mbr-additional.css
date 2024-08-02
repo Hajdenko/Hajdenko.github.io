@@ -2317,8 +2317,8 @@ a {
 
 @media screen and (max-width: 991px) {
     #voting {
-        visibility: hidden;
-        display: none;
+        visibility: hidden !important;
+        display: none !important;
     }
 }
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {

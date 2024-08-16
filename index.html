@@ -93,12 +93,58 @@
 </section>
 
 <section data-bs-version="5.1" class="header14 cid-tjqpRpO1sc mbr-fullscreen mbr-parallax-background" id="header14-d">
+    <style>
+        .countdown-timer {
+            position: absolute;
+            top: -2.5em;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 38px;
+            font-family: 'Fredoka One', display;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 10px;
+            z-index: 10;
+            text-align: center;
+        }
+        @media screen and (max-width: 350px) {
+            .countdown-timer {
+                top: -4em;
+                font-size: 15px;
+            }
+        }
+        @media screen and (max-width: 400px) and (min-width: 350px) {
+            .countdown-timer {
+                top: -4em;
+                font-size: 18px;
+            }
+        }
+        @media screen and (max-width: 768px) and (min-width: 400px) {
+            .countdown-timer {
+                top: 0;
+                font-size: 24px;
+            }
+        }
+        @media screen and (max-width: 991px) and (min-width: 768px) {
+            .countdown-timer {
+                top: -5em;
+                font-size: 38px;
+            }
+        }
+        @media screen and (min-width: 1400px) {
+            .countdown-timer {
+                top: -1em;
+                font-size: 42px;
+            }
+        }
+    </style>
     <div class="mbr-overlay" style="opacity: 0.8; background-color: rgb(1, 17, 26);"></div>
 
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 text-center">
-                <div id="countdown" style="font-size: 2rem; color: white; margin-bottom: 20px;"></div>
+                <div id="countdown" class="countdown-timer"></div>
             </div>
         </div>
         

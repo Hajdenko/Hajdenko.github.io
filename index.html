@@ -93,13 +93,15 @@
 </section>
 
 <section data-bs-version="5.1" class="header14 cid-tjqpRpO1sc mbr-fullscreen mbr-parallax-background" id="header14-d">
-
-    
-
-    
     <div class="mbr-overlay" style="opacity: 0.8; background-color: rgb(1, 17, 26);"></div>
 
     <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center">
+                <div id="countdown" style="font-size: 2rem; color: white; margin-bottom: 20px;"></div>
+            </div>
+        </div>
+        
         <div class="row justify-content-center align-items-center">
             <div class="col-12 col-md-6 image-wrapper">
                 <img src="assets/images/hnl.png" alt="">
@@ -109,12 +111,36 @@
                     <h1 class="mbr-section-title mbr-fonts-style mb-3 display-1"><strong>HnL SMP</strong></h1>
                     <p class="mbr-text mbr-fonts-style display-7">Jsme začínající Minecraft server (SMP) se zkušenostmi.</p>
                     <p class="mbr-text mbr-fonts-style display-7">Díky discordu se můžeš připojit na náš server. Na co ještě čekáš?</p>
-                    <div class="mbr-section-btn mt-3"><a class="btn btn-primary display-4" href="/discord" target="_blank">Discord Server</a>
+                    <div class="mbr-section-btn mt-3"><a class="btn btn-primary display-4" href="/discord" target="_blank">Discord Server</a></div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+    // finish
+    var countDownDate = new Date("Aug 20, 2024 16:00:00").getTime();
+
+    var countdownfunction = setInterval(function() {
+        var cur = new Date().getTime();
+
+        var till = countDownDate - now;
+
+        var d = Math.floor(till / (1000 * 60 * 60 * 24));
+        var h = Math.floor((till % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var m = Math.floor((till % (1000 * 60 * 60)) / (1000 * 60));
+        var s = Math.floor((till % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerHTML = d + "d " + h + "h "
+        + m + "m " + s + "s ";
+
+        if (distance < 0) {
+            clearInterval(countdownfunction);
+            document.getElementById("countdown").innerHTML = "Server byl úspěšně spuštěn!";
+        }
+    }, 1000);
+</script>
 
 <section data-bs-version="5.1" class="features12 cid-tjqffd3dFI" id="features13-2">
 

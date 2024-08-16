@@ -2036,10 +2036,6 @@
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
 }
-.countdown-timer {
-  -webkit-animation-name: fadeInUp;
-  animation-name: fadeInUp;
-}
 @-webkit-keyframes fadeInUpBig {
   from {
     opacity: 0;

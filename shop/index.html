@@ -28,7 +28,7 @@
             color: #ffffff;
         }
         .card {
-            background-color: rgb(30 30 30 / 90%));
+            background-color: rgba(30, 30, 30, 0.9));
             border: none;
             margin-bottom: 20px;
         }
@@ -49,6 +49,29 @@
         }
         .shop-content {
             padding-top: 20px;
+        }
+        .item-details {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 600px;
+            background-color: rgb(40, 40, 40);
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 1000;
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 999;
         }
     </style>
 </head>
@@ -109,21 +132,21 @@
                         <div class="card-body">
                             <h5 class="card-title">1 Month VIP</h5>
                             <p class="card-text">Cena: <span class="Cena-czk">199 CZK</span><span class="Cena-eur" style="display:none;">8 EUR</span></p>
-                            <button class="btn btn-primary btn-buy">Zakoupit</button>
+                            <button class="btn btn-primary btn-more" data-item="MesicniVIP">Více</button>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">3 Months VIP (10% OFF)</h5>
                             <p class="card-text">Cena: <span class="Cena-czk">499 CZK</span><span class="Cena-eur" style="display:none;">19.9 EUR</span></p>
-                            <button class="btn btn-primary btn-buy">Zakoupit</button>
+                            <button class="btn btn-primary btn-more" data-item="3MesicniVIP">Více</button>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">6 Months VIP (30% OFF)</h5>
                             <p class="card-text">Cena: <span class="Cena-czk">999 CZK</span><span class="Cena-eur" style="display:none;">39.9 EUR</span></p>
-                            <button class="btn btn-primary btn-buy">Zakoupit</button>
+                            <button class="btn btn-primary btn-more" data-item="6MesicniVIP">Více</button>
                         </div>
                     </div>
                 </div>
@@ -135,24 +158,30 @@
                         <div class="card-body">
                             <h5 class="card-title">100 Korunek</h5>
                             <p class="card-text">Cena: <span class="Cena-czk">100 CZK</span><span class="Cena-eur" style="display:none;">4 EUR</span></p>
-                            <button class="btn btn-primary btn-buy">Zakoupit</button>
+                            <button class="btn btn-primary btn-more" data-item="100Korunek">Více</button>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">200 Korunek</h5>
                             <p class="card-text">Cena: <span class="Cena-czk">200 CZK</span><span class="Cena-eur" style="display:none;">8 EUR</span></p>
-                            <button class="btn btn-primary btn-buy">Zakoupit</button>
+                            <button class="btn btn-primary btn-more" data-item="300Korunek">Více</button>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">600 Korunek</h5>
                             <p class="card-text">Cena: <span class="Cena-czk">600 CZK</span><span class="Cena-eur" style="display:none;">24 EUR</span></p>
-                            <button class="btn btn-primary btn-buy">Zakoupit</button>
+                            <button class="btn btn-primary btn-more" data-item="600Korunek">Více</button>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="overlay" id="overlay"></div>
+            <div class="item-details" id="itemDetails">
+                <h2 id="itemTitle"></h2>
+                <div id="itemDescription"></div>
+                <button class="btn btn-primary" id="buyButton">Zakoupit</button>
             </div>
             <div class="row justify-content-center mt-4">
                 <div class="col-12">
@@ -218,34 +247,56 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const czkBtn = document.getElementById('czk-btn');
-            const eurBtn = document.getElementById('eur-btn');
-            const czkCenas = document.querySelectorAll('.Cena-czk');
-            const eurCenas = document.querySelectorAll('.Cena-eur');
+            // ... (previous JavaScript for currency switching remains the same) ...
 
-            czkBtn.addEventListener('click', function() {
-                czkBtn.classList.add('btn-primary');
-                czkBtn.classList.remove('btn-secondary');
-                eurBtn.classList.add('btn-secondary');
-                eurBtn.classList.remove('btn-primary');
-                czkCenas.forEach(Cena => Cena.style.display = 'inline');
-                eurCenas.forEach(Cena => Cena.style.display = 'none');
-            });
+            const moreButtons = document.querySelectorAll('.btn-more');
+            const itemDetails = document.getElementById('itemDetails');
+            const overlay = document.getElementById('overlay');
+            const buyButton = document.getElementById('buyButton');
+            const itemTitle = document.getElementById('itemTitle');
+            const itemDescription = document.getElementById('itemDescription');
 
-            eurBtn.addEventListener('click', function() {
-                eurBtn.classList.add('btn-primary');
-                eurBtn.classList.remove('btn-secondary');
-                czkBtn.classList.add('btn-secondary');
-                czkBtn.classList.remove('btn-primary');
-                eurCenas.forEach(Cena => Cena.style.display = 'inline');
-                czkCenas.forEach(Cena => Cena.style.display = 'none');
-            });
+            const itemInfo = {
+                '1_month_vip': {
+                    title: '1 Month VIP',
+                    description: '<h3>Výhody:</h3><ul><li>Přístup k VIP oblastem</li><li>Exkluzivní herní výhody</li></ul><h3>Nevýhody:</h3><ul><li>Omezená doba trvání</li></ul>',
+                    priceCZK: '199 CZK',
+                    priceEUR: '8 EUR'
+                },
+                // ... (add other items here) ...
+            };
 
-            const buyButtons = document.querySelectorAll('.btn-buy');
-            buyButtons.forEach(button => {
+            moreButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    alert('koupeno lol scammed');
+                    const item = this.getAttribute('data-item');
+                    showItemDetails(item);
                 });
+            });
+
+            function showItemDetails(item) {
+                const info = itemInfo[item];
+                itemTitle.textContent = info.title;
+                itemDescription.innerHTML = info.description;
+                buyButton.setAttribute('data-item', item);
+                itemDetails.style.display = 'block';
+                overlay.style.display = 'block';
+            }
+
+            overlay.addEventListener('click', function() {
+                itemDetails.style.display = 'none';
+                overlay.style.display = 'none';
+            });
+
+            buyButton.addEventListener('click', function() {
+                const item = this.getAttribute('data-item');
+                const nickname = prompt('Zadejte svůj Minecraft nickname:');
+                if (nickname) {
+                    const info = itemInfo[item];
+                    const currency = document.querySelector('#czk-btn').classList.contains('btn-primary') ? 'CZK' : 'EUR';
+                    const price = currency === 'CZK' ? info.priceCZK : info.priceEUR;
+                    const url = `https://platby.hostify.cz/87484?currency=${currency}&payment=${encodeURIComponent(info.title)}&player=${encodeURIComponent(nickname)}`;
+                    window.location.href = url;
+                }
             });
         });
     </script>

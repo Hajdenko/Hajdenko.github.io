@@ -28,7 +28,7 @@
             color: #ffffff;
         }
         .card {
-            background-color: #022240;
+            background-color: rgba(2, 34, 64, 0.8);
             border: none;
             margin-bottom: 20px;
         }
@@ -46,6 +46,9 @@
         .payment-methods img {
             height: 30px;
             margin-right: 10px;
+        }
+        .shop-content {
+            padding-top: 80px;
         }
     </style>
 </head>
@@ -87,23 +90,8 @@
 
     <section data-bs-version="5.1" class="header14 cid-tjqpRpO1sc mbr-fullscreen mbr-parallax-background" id="header14-d">
         <div class="mbr-overlay" style="opacity: 0.8; background-color: rgb(1, 17, 26);"></div>
-        <div class="container">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-12 col-md-6 image-wrapper">
-                    <img src="../assets/images/hnl.png" alt="">
-                </div>
-                <div class="col-12 col-md">
-                    <div class="text-wrapper">
-                        <h1 class="mbr-section-title mbr-fonts-style mb-3 display-1"><strong>HnL SMP Shop</strong></h1>
-                        <p class="mbr-text mbr-fonts-style display-7">Zde můžete zakoupit VIP a Korunky pro HnL SMP.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="content4 cid-shop" id="shop">
-        <div class="container">
+        <div class="container shop-content">
+            <h1 class="mbr-section-title mbr-fonts-style mb-3 display-1 text-center"><strong>HnL SMP Shop</strong></h1>
             <div class="row justify-content-center">
                 <div class="col-12 col-md-6 mb-4">
                     <div class="currency-switch text-center">
@@ -250,3 +238,19 @@
                 czkBtn.classList.add('btn-secondary');
                 czkBtn.classList.remove('btn-primary');
                 eurPrices.forEach(price => price.style.display = 'inline');
+                czkPrices.forEach(price => price.style.display = 'none');
+            });
+
+            // Add functionality for buy buttons here
+            const buyButtons = document.querySelectorAll('.btn-buy');
+            buyButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Implement your purchase logic here
+                    alert('Purchase functionality to be implemented');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+</antArtifact

@@ -1,205 +1,166 @@
 <!DOCTYPE html>
-<html lang="cs">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-    <link rel="shortcut icon" href="../assets/images/hnl.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HnL SMP | Obchod</title>
-    <link rel="stylesheet" href="../assets/web/assets/mobirise-icons2/mobirise2.css">
+    <title>My Site</title>
+    
+    <!-- Mobirise Stylesheets -->
     <link rel="stylesheet" href="../assets/web/assets/mobirise-icons/mobirise-icons.css">
+    <link rel="stylesheet" href="../assets/tether/tether.min.css">
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="../assets/parallax/jarallax.css">
-    <link rel="stylesheet" href="../assets/animatecss/animate.css">
     <link rel="stylesheet" href="../assets/dropdown/css/style.css">
-    <link rel="stylesheet" href="../assets/socicon/css/styles.css">
     <link rel="stylesheet" href="../assets/theme/css/style.css">
-    <link rel="stylesheet" href="../assets/mobirise/css/mbr-additional.css">
-    <link rel="preload" href="https://fonts.googleapis.com/css?family=Fredoka+One:400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <style>
-        body {
-            background: url('path_to_your_background_image.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: #ffffff;
-            text-align: center;
-        }
+    <link rel="stylesheet" href="../assets/mobirise/css/mbr-additional.css" type="text/css">
 
-        .container {
-            padding-top: 100px;
-        }
-
-        .card {
-            background-color: rgba(30, 30, 30, 0.9);
-            border: none;
-            margin-bottom: 20px;
-        }
-
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-        }
-
-        .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
-        }
-
-        .popup,
-        .overlay {
-            display: none;
-        }
-
-        .popup.active,
-        .overlay.active {
-            display: block;
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 999;
-        }
-
-        .popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.8);
-            background-color: #1e1e1e;
-            padding: 20px;
-            border-radius: 10px;
-            z-index: 1000;
-            max-width: 80%;
-            width: 400px;
-            opacity: 0;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .popup.active {
-            transform: translate(-50%, -50%) scale(1);
-            opacity: 1;
-        }
-
-        .popup h2 {
-            margin-top: 0;
-        }
-
-        .popup input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #2c2c2c;
-            color: #ffffff;
-        }
-
-        .popup button {
-            margin-top: 10px;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 24px;
-            cursor: pointer;
-            color: #ffffff;
-        }
-    </style>
 </head>
-
 <body>
-    <div class="container">
-        <h1>HnL SMP | Shop</h1>
-
-        <div class="row">
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">1 Month VIP</h5>
-                        <p class="card-text">Cena: <span class="Cena-czk">199 CZK</span><span class="Cena-eur"
-                                style="display:none;">8 EUR</span></p>
-                        <button class="btn btn-primary btn-more" data-item="MesicniVIP">Více</button>
-                    </div>
+    <!-- Navigation bar -->
+    <section class="menu cid-qY96mPG8GC" once="menu" id="menu1-0">
+        <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm bg-color transparent">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">3 Months VIP</h5>
-                        <p class="card-text">Cena: <span class="Cena-czk">499 CZK</span><span class="Cena-eur"
-                                style="display:none;">19.9 EUR</span></p>
-                        <button class="btn btn-primary btn-more" data-item="3MesicniVIP">Více</button>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">6 Months VIP</h5>
-                        <p class="card-text">Cena: <span class="Cena-czk">999 CZK</span><span class="Cena-eur"
-                                style="display:none;">39.9 EUR</span></p>
-                        <button class="btn btn-primary btn-more" data-item="6MesicniVIP">Více</button>
-                    </div>
+            </button>
+            <div class="menu-logo">
+                <div class="navbar-brand">
+                    <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="#">My Site</a></span>
                 </div>
             </div>
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">100 Korunek</h5>
-                        <p class="card-text">Cena: <span class="Cena-czk">100 CZK</span><span class="Cena-eur"
-                                style="display:none;">4 EUR</span></p>
-                        <button class="btn btn-primary btn-more" data-item="100Korunek">Více</button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
+                    <li class="nav-item"><a class="nav-link link text-white display-4" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link link text-white display-4" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link link text-white display-4" href="#">Services</a></li>
+                    <li class="nav-item"><a class="nav-link link text-white display-4" href="#">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+
+    <!-- Header section with background image -->
+    <section class="header5 cid-qY96n2TxHA mbr-fullscreen mbr-parallax-background" id="header5-1" style="background-image: url('../assets/images/your-image.jpg');">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="mbr-white col-md-10">
+                    <h1 class="mbr-section-title align-center pb-3 mbr-white mbr-bold display-1">Welcome to My Site</h1>
+                    <p class="mbr-text align-center display-5 pb-3 mbr-white">Explore our services and solutions tailored for your business.</p>
+                    <div class="mbr-section-btn align-center"><a class="btn btn-md btn-primary display-4" href="#">Get Started</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features section -->
+    <section class="features11 cid-qY96npxbKS" id="features11-2">
+        <div class="container">
+            <div class="media-container-row">
+                <div class="card p-3 col-12 col-md-6 col-lg-4">
+                    <div class="card-wrapper">
+                        <div class="card-img">
+                            <img src="../assets/images/feature1.jpg" alt="Feature 1" title="">
+                        </div>
+                        <div class="card-box">
+                            <h4 class="card-title pb-3 mbr-fonts-style display-7">Feature One</h4>
+                            <p class="mbr-text mbr-fonts-style display-7">Description of Feature One. Brief details about how it can benefit users.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">200 Korunek</h5>
-                        <p class="card-text">Cena: <span class="Cena-czk">200 CZK</span><span class="Cena-eur"
-                                style="display:none;">8 EUR</span></p>
-                        <button class="btn btn-primary btn-more" data-item="300Korunek">Více</button>
+                <div class="card p-3 col-12 col-md-6 col-lg-4">
+                    <div class="card-wrapper">
+                        <div class="card-img">
+                            <img src="../assets/images/feature2.jpg" alt="Feature 2" title="">
+                        </div>
+                        <div class="card-box">
+                            <h4 class="card-title pb-3 mbr-fonts-style display-7">Feature Two</h4>
+                            <p class="mbr-text mbr-fonts-style display-7">Description of Feature Two. What makes this service stand out.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">600 Korunek</h5>
-                        <p class="card-text">Cena: <span class="Cena-czk">600 CZK</span><span class="Cena-eur"
-                                style="display:none;">24 EUR</span></p>
-                        <button class="btn btn-primary btn-more" data-item="600Korunek">Více</button>
+                <div class="card p-3 col-12 col-md-6 col-lg-4">
+                    <div class="card-wrapper">
+                        <div class="card-img">
+                            <img src="../assets/images/feature3.jpg" alt="Feature 3" title="">
+                        </div>
+                        <div class="card-box">
+                            <h4 class="card-title pb-3 mbr-fonts-style display-7">Feature Three</h4>
+                            <p class="mbr-text mbr-fonts-style display-7">Description of Feature Three. Highlighting unique aspects.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="overlay" id="overlay"></div>
+    <!-- Contact section -->
+    <section class="cid-qY96o0u3Wz" id="footer5-3">
+        <div class="container">
+            <div class="media-container-row content mbr-white">
+                <div class="col-12 col-md-3">
+                    <div class="media-wrap">
+                        <a href="#">
+                            <img src="../assets/images/logo.png" alt="Logo" title="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-3 mbr-fonts-style display-7">
+                    <h5 class="pb-3">Address</h5>
+                    <p class="mbr-text">1234 Street Name, City, Country</p>
+                </div>
+                <div class="col-12 col-md-3 mbr-fonts-style display-7">
+                    <h5 class="pb-3">Contacts</h5>
+                    <p class="mbr-text">Email: info@mysite.com<br>Phone: +1 234 567 890</p>
+                </div>
+                <div class="col-12 col-md-3 mbr-fonts-style display-7">
+                    <h5 class="pb-3">Follow Us</h5>
+                    <div class="social-list">
+                        <a href="#" class="soc-item">
+                            <span class="mbr-iconfont mbr-iconfont-social socicon-twitter socicon"></span>
+                        </a>
+                        <a href="#" class="soc-item">
+                            <span class="mbr-iconfont mbr-iconfont-social socicon-facebook socicon"></span>
+                        </a>
+                        <a href="#" class="soc-item">
+                            <span class="mbr-iconfont mbr-iconfont-social socicon-instagram socicon"></span>
+                        </a>
+                        <a href="#" class="soc-item">
+                            <span class="mbr-iconfont mbr-iconfont-social socicon-linkedin socicon"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-lower">
+                <div class="media-container-row">
+                    <div class="col-sm-12">
+                        <hr>
+                    </div>
+                </div>
+                <div class="media-container-row mbr-white">
+                    <div class="col-sm-6 copyright">
+                        <p class="mbr-text mbr-fonts-style display-7">© 2024 My Site - All Rights Reserved</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="popup" id="itemDetailsPopup">
-        <span class="close-btn">&times;</span>
-        <h2 id="itemTitle"></h2>
-        <div id="itemDescription"></div>
-        <button class="btn btn-primary" id="buyButton">Zakoupit</button>
-    </div>
-
-    <div class="popup" id="nicknamePopup">
-        <span class="close-btn">&times;</span>
-        <h2>Zadejte svůj Minecraft nickname</h2>
-        <input type="text" id="nicknameInput" placeholder="Váš Minecraft nickname">
-        <button class="btn btn-primary" id="submitNickname">Odeslat</button>
-    </div>
-
-    <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Mobirise Scripts -->
+    <script src="../assets/web/assets/jquery/jquery.min.js"></script>
+    <script src="../assets/popper/popper.min.js"></script>
+    <script src="../assets/tether/tether.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="../assets/smoothscroll/smooth-scroll.js"></script>
-    <script src="../assets/ytplayer/index.js"></script>
+    <script src="../assets/touchswipe/jquery.touch-swipe.min.js"></script>
+    <script src="../assets/parallax/jarallax.min.js"></script>
+    <script src="../assets/dropdown/js/nav-dropdown.js"></script>
     <script src="../assets/dropdown/js/navbar-dropdown.js"></script>
     <script src="../assets/theme/js/script.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script>
         const itemInfo = {
             'MesicniVIP': {

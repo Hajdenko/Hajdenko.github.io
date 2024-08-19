@@ -575,14 +575,14 @@
             const eurBtn = document.getElementById('eur-btn');
             const czkPrices = document.querySelectorAll('.Cena-czk');
             const eurPrices = document.querySelectorAll('.Cena-eur');
-            const moreButtons = document.querySelectorAll('.btn-primary');
+            const moreButtons = document.querySelectorAll('.btn-more');
             const overlay = document.getElementById('overlay');
-
+        
             overlay.style.display = 'none';
-
+        
             czkBtn.addEventListener('click', () => switchCurrency('czk'));
             eurBtn.addEventListener('click', () => switchCurrency('eur'));
-
+        
             function switchCurrency(currency) {
                 if (currency === 'czk') {
                     czkBtn.classList.add('btn-primary');
@@ -600,7 +600,7 @@
                     czkPrices.forEach(price => price.style.display = 'none');
                 }
             }
-
+        
             const itemInfo = {
                 'MesicniVIP': {
                     baseName: 'MesicniVIP',
@@ -634,8 +634,8 @@
                     advantages: ['Okamžité připsání na účet', 'Možnost nákupu různých herních předmětů'],
                     disadvantages: ['Omezené množství']
                 },
-                '300Korunek': {
-                    baseName: '300Korunek',
+                '200Korunek': {
+                    baseName: '200Korunek',
                     title: '200 Korunek',
                     priceCZK: 200,
                     priceEUR: 8,
@@ -651,19 +651,19 @@
                     disadvantages: ['Nejvyšší jednorázová cena']
                 }
             };
-
+        
             moreButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    const item = this.closest('.card-body').querySelector('h5').textContent.trim().split(' ')[0];
+                    const item = this.getAttribute('data-item');
                     showItemDetails(item);
                 });
             });
-
+        
             function showItemDetails(item) {
                 const info = itemInfo[item];
                 const currency = czkBtn.classList.contains('btn-primary') ? 'CZK' : 'EUR';
                 const price = currency === 'CZK' ? info.priceCZK : info.priceEUR;
-
+        
                 const popupHTML = `
                     <div class="item-popup">
                         <span class="mbri-left close-icon"></span>
@@ -686,38 +686,34 @@
                         <button class="btn btn-primary buy-btn" data-item="${item}">Zakoupit</button>
                     </div>
                 `;
-
+        
                 showPopup(popupHTML);
-
+        
                 const popup = document.querySelector('.item-popup');
-                const minusBtn = popup.querySelector('.minus');
-                const plusBtn = popup.querySelector('.plus');
-                const priceElement = popup.querySelector('.price');
                 const buyBtn = popup.querySelector('.buy-btn');
-
+        
                 buyBtn.addEventListener('click', function() {
                     showNicknamePopup(item, price, currency);
                 });
             }
-
+        
             function showNicknamePopup(item, price, currency) {
                 const nicknamePopupHTML = `
                     <div class="nickname-popup">
                         <span class="mbri-left close-icon minecraft-left"></span>
-                        <h2>Zadejte svůj Minecraft nick‎</h2>
+                        <h2>Zadejte svůj Minecraft nick</h2>
                         <input type="text" id="minecraft-nick" placeholder="Váš Minecraft nick">
                         <p>Potřebujeme znát váš Minecraft nick, abychom vám mohli přidělit zakoupenou odměnu na správný účet. Tento nick bude použit pouze pro účely přidělení vaší odměny a nebude sdílen s třetími stranami.</p>
                         <button class="btn btn-primary confirm-btn">Potvrdit</button>
                     </div>
                 `;
-
+        
                 showPopup(nicknamePopupHTML);
-
+        
                 const confirmBtn = document.querySelector('.confirm-btn');
                 confirmBtn.addEventListener('click', function() {
                     const nickname = document.getElementById('minecraft-nick').value;
                     if (nickname) {
-                        const totalPrice = (price).toFixed(2);
                         const url = `https://platby.hostify.cz/87484?currency=${currency}&payment=${encodeURIComponent(itemInfo[item].baseName)}&player=${encodeURIComponent(nickname)}`;
                         window.location.href = url;
                     } else {
@@ -725,7 +721,7 @@
                     }
                 });
             }
-
+        
             function showPopup(content) {
                 const existingPopup = document.querySelector('.popup-container');
                 if (existingPopup) {
@@ -749,12 +745,12 @@
                         popupContainer.querySelector('div').style.transform = 'scale(1)';
                     }, 10);
                 }
-            
+        
                 const closeIcons = document.querySelectorAll('.close-icon');
                 closeIcons.forEach(icon => {
                     icon.addEventListener('click', closePopup);
                 });
-            
+        
                 const closePopupOnOutsideClick = (e) => {
                     const popups = document.querySelectorAll('.popup-container');
                     const topPopup = popups[popups.length - 1];
@@ -762,18 +758,18 @@
                         closePopup();
                     }
                 };
-            
+        
                 document.addEventListener('click', closePopupOnOutsideClick);
-            
+        
                 const closePopupOnEscape = (e) => {
                     if (e.key === 'Escape') {
                         closePopup();
                     }
                 };
-            
+        
                 document.addEventListener('keydown', closePopupOnEscape);
             }
-
+        
             function closePopup() {
                 const popups = document.querySelectorAll('.popup-container');
                 if (popups.length > 0) {

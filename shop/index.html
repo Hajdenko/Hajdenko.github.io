@@ -659,10 +659,15 @@
 
             function showPopup(content) {
                 const existingPopup = document.querySelector('.popup-container');
+                const arrowIcon = `
+                    <span class="mbri-left close-icon" style="position: absolute; top: 10px; left: 10px; font-size: 24px; cursor: pointer;"></span>
+                `;
+                const popupContent = arrowIcon + content;
+            
                 if (existingPopup) {
                     const newPopupContainer = document.createElement('div');
                     newPopupContainer.className = 'popup-container';
-                    newPopupContainer.innerHTML = content;
+                    newPopupContainer.innerHTML = popupContent;
                     document.body.appendChild(newPopupContainer);
                     setTimeout(() => {
                         newPopupContainer.style.opacity = '1';
@@ -671,7 +676,7 @@
                 } else {
                     const popupContainer = document.createElement('div');
                     popupContainer.className = 'popup-container';
-                    popupContainer.innerHTML = content;
+                    popupContainer.innerHTML = popupContent;
                     document.body.appendChild(popupContainer);
                     overlay.style.display = 'block';
                     document.body.style.overflow = 'hidden';
@@ -680,7 +685,11 @@
                         popupContainer.querySelector('div').style.transform = 'scale(1)';
                     }, 10);
                 }
-
+            
+                // Add event listener to close icon
+                const closeIcon = document.querySelector('.close-icon');
+                closeIcon.addEventListener('click', closePopup);
+            
                 const closePopupOnOutsideClick = (e) => {
                     const popups = document.querySelectorAll('.popup-container');
                     const topPopup = popups[popups.length - 1];
@@ -688,15 +697,15 @@
                         closePopup();
                     }
                 };
-
+            
                 document.addEventListener('click', closePopupOnOutsideClick);
-
+            
                 const closePopupOnEscape = (e) => {
                     if (e.key === 'Escape') {
                         closePopup();
                     }
                 };
-
+            
                 document.addEventListener('keydown', closePopupOnEscape);
             }
 

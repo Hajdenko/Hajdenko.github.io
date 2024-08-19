@@ -47,19 +47,6 @@
             height: 30px;
             margin-right: 10px;
         }
-        .item-details {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            max-width: 600px;
-            background-color: rgb(40, 40, 40);
-            padding: 20px;
-            border-radius: 10px;
-            z-index: 1000;
-        }
         .overlay {
             display: none;
             position: fixed;
@@ -113,11 +100,6 @@
         .item-popup h2, .nickname-popup h2 {
             text-align: left;
             margin-bottom: 20px;
-        }
-
-        .item-details {
-            margin-bottom: 20px;
-            width: 100%;
         }
 
         .advantages, .disadvantages {
@@ -207,41 +189,6 @@
             margin-right: 10px;
         }
 
-        
-        .btn-more {
-            margin-left: 85%;
-        }
-
-        @media screen and (max-width: 1400px) and (min-width: 1250px) {
-            .btn-more {
-                margin-left: 83%;
-            }
-        }
-        @media screen and (max-width: 1250px) and (min-width: 1050px) {
-            .btn-more {
-                margin-left: 80%;
-            }
-        }
-        @media screen and (max-width: 1050px) and (min-width: 767px) {
-            .btn-more {
-                margin-left: 72%;
-            }
-        }
-        @media screen and (max-width: 767px) and (min-width: 530px) {
-            .btn-more {
-                margin-left: 82%;
-            }
-        }
-        @media screen and (max-width: 530px) and (min-width: 380px) {
-            .btn-more {
-                margin-left: 73%;
-            }
-        }
-        @media screen and (max-width: 380px) and (min-width: 0px) {
-            .btn-more {
-                margin-left: 0%;
-            }
-        }
         span.mbri-left.close-icon {
             position: absolute;
             top: 1.4em;
@@ -269,6 +216,9 @@
         }
         fa-icon.ng-fa-icon.mr-2.ng-star-inserted {
             margin-right: 1em;
+        }
+        .item-details {
+            display: contents;
         }
     </style>
 </head>

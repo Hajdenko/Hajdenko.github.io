@@ -135,29 +135,6 @@
             padding-left: 20px;
         }
 
-        .quantity-control {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 20px 0;
-        }
-
-        .quantity-btn {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-            font-size: 18px;
-        }
-
-        .quantity-input {
-            width: 50px;
-            text-align: center;
-            margin: 0 10px;
-            font-size: 18px;
-        }
-
         .price {
             font-size: 24px;
             font-weight: bold;
@@ -508,27 +485,6 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="quantity-control">
-                            <button class="quantity-btn minus btn btn-primary" style="
-                                padding-left: .55em;
-                                padding-right: .55em;
-                                padding-top: .2em;
-                                padding-bottom: .3em;
-                            ">−</button>
-                            <input type="number" class="quantity-input" value="1" min="1" max="10" style="
-                                width: 2.3em;
-                                height: 2.5em;
-                                border-radius: 4px;
-                                border: none;
-                            ">
-                            <button class="quantity-btn plus btn btn-primary" style="
-                                padding-left: .5em;
-                                padding-left,padding-right: 5;
-                                padding-right: 0.5em;
-                                padding-top: .2em;
-                                padding-bottom: .3em;
-                            ">+</button>
-                        </div>
                         <p class="price">${price} ${currency}</p>
                         <button class="btn btn-primary buy-btn" data-item="${item}">Zakoupit</button>
                     </div>
@@ -537,40 +493,17 @@
                 showPopup(popupHTML);
 
                 const popup = document.querySelector('.item-popup');
-                const quantityInput = popup.querySelector('.quantity-input');
                 const minusBtn = popup.querySelector('.minus');
                 const plusBtn = popup.querySelector('.plus');
                 const priceElement = popup.querySelector('.price');
                 const buyBtn = popup.querySelector('.buy-btn');
 
-                function updatePrice() {
-                    const quantity = parseInt(quantityInput.value);
-                    const totalPrice = (price * quantity).toFixed(2);
-                    priceElement.textContent = `${totalPrice} ${currency}`;
-                }
-
-                minusBtn.addEventListener('click', () => {
-                    if (quantityInput.value > 1) {
-                        quantityInput.value = parseInt(quantityInput.value) - 1;
-                        updatePrice();
-                    }
-                });
-
-                plusBtn.addEventListener('click', () => {
-                    if (quantityInput.value < 10) {
-                        quantityInput.value = parseInt(quantityInput.value) + 1;
-                        updatePrice();
-                    }
-                });
-
-                quantityInput.addEventListener('change', updatePrice);
-
                 buyBtn.addEventListener('click', function() {
-                    showNicknamePopup(item, price, currency, quantityInput.value);
+                    showNicknamePopup(item, price, currenc);
                 });
             }
 
-            function showNicknamePopup(item, price, currency, quantity) {
+            function showNicknamePopup(item, price, currency) {
                 const nicknamePopupHTML = `
                     <div class="nickname-popup">
                         <h2>Zadejte svůj Minecraft nick‎ ‎ ‎‎  ‎ ‎  ‎‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎  ‎ ‎ ‎‎  ‎ ‎ </h2>
@@ -586,7 +519,7 @@
                 confirmBtn.addEventListener('click', function() {
                     const nickname = document.getElementById('minecraft-nick').value;
                     if (nickname) {
-                        const totalPrice = (price * quantity).toFixed(2);
+                        const totalPrice = (price).toFixed(2);
                         const url = `https://platby.hostify.cz/87484?currency=${currency}&payment=${encodeURIComponent(itemInfo[item].title)}&player=${encodeURIComponent(nickname)}`;
                         window.location.href = url;
                     } else {

@@ -63,6 +63,16 @@
             border-radius: 10px;
             z-index: 1000;
         }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+        }
 .popup-container {
     position: fixed;
     top: 0;
@@ -353,6 +363,8 @@
     const moreButtons = document.querySelectorAll('.btn-more');
     const overlay = document.getElementById('overlay');
 
+    overlay.style.display = 'none';
+
     czkBtn.addEventListener('click', () => switchCurrency('czk'));
     eurBtn.addEventListener('click', () => switchCurrency('eur'));
 
@@ -526,6 +538,7 @@
         document.body.appendChild(popupContainer);
 
         overlay.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Prevent scrolling on the main page
         setTimeout(() => {
             popupContainer.style.opacity = '1';
             popupContainer.querySelector('div').style.transform = 'scale(1)';
@@ -552,6 +565,7 @@
             setTimeout(() => {
                 popupContainer.remove();
                 overlay.style.display = 'none';
+                document.body.style.overflow = '';
             }, 300);
         }
     }

@@ -536,6 +536,7 @@
 
             const itemInfo = {
                 'MesicniVIP': {
+                    baseName: 'MesicniVIP',
                     title: 'VIP na 1 Měsíc',
                     priceCZK: 199,
                     priceEUR: 8,
@@ -543,6 +544,7 @@
                     disadvantages: ['Omezená doba trvání', 'Některé funkce mohou být nedostupné']
                 },
                 '3MesicniVIP': {
+                    baseName: '3MesicniVIP',
                     title: 'VIP na 3 Měsíce',
                     priceCZK: 499,
                     priceEUR: 19.9,
@@ -550,6 +552,7 @@
                     disadvantages: ['Vyšší jednorázová cena']
                 },
                 '6MesicniVIP': {
+                    baseName: '6MesicniVIP',
                     title: 'VIP na 6 Měsíců',
                     priceCZK: 999,
                     priceEUR: 39.9,
@@ -557,6 +560,7 @@
                     disadvantages: ['Nejvyšší jednorázová cena']
                 },
                 '100Korunek': {
+                    baseName: '100Korunek',
                     title: '100 Korunek',
                     priceCZK: 100,
                     priceEUR: 4,
@@ -564,6 +568,7 @@
                     disadvantages: ['Omezené množství']
                 },
                 '300Korunek': {
+                    baseName: '300Korunek',
                     title: '200 Korunek',
                     priceCZK: 200,
                     priceEUR: 8,
@@ -571,6 +576,7 @@
                     disadvantages: ['Vyšší jednorázová cena']
                 },
                 '600Korunek': {
+                    baseName: '600Korunek',
                     title: '600 Korunek',
                     priceCZK: 600,
                     priceEUR: 24,
@@ -643,7 +649,7 @@
                     const nickname = document.getElementById('minecraft-nick').value;
                     if (nickname) {
                         const totalPrice = (price).toFixed(2);
-                        const url = `https://platby.hostify.cz/87484?currency=${currency}&payment=${encodeURIComponent(itemInfo[item])}&player=${encodeURIComponent(nickname)}`;
+                        const url = `https://platby.hostify.cz/87484?currency=${currency}&payment=${encodeURIComponent(itemInfo[item].baseName)}&player=${encodeURIComponent(nickname)}`;
                         window.location.href = url;
                     } else {
                         alert('Musíš zadat svůj Minecraft Nickname!');

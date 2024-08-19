@@ -122,6 +122,110 @@
             padding: 10px;
             font-size: 18px;
         }
+        .popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.item-popup, .nickname-popup {
+    background-color: #011120;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.item-popup h2, .nickname-popup h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.item-details {
+    margin-bottom: 20px;
+}
+
+.advantages, .disadvantages {
+    margin-bottom: 15px;
+}
+
+.advantages h3, .disadvantages h3 {
+    margin-bottom: 10px;
+}
+
+.advantages ul, .disadvantages ul {
+    padding-left: 20px;
+}
+
+.quantity-control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.quantity-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.quantity-input {
+    width: 50px;
+    text-align: center;
+    margin: 0 10px;
+    font-size: 18px;
+}
+
+.price {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.buy-btn, .confirm-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.nickname-popup p {
+    margin-bottom: 20px;
+}
+
+#minecraft-nick {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
     </style>
 </head>
 <body>
@@ -328,32 +432,44 @@
         'MesicniVIP': {
             title: '1 Month VIP',
             priceCZK: 199,
-            priceEUR: 8
+            priceEUR: 8,
+            advantages: ['Přístup k VIP oblastem', 'Exkluzivní herní výhody', 'Prioritní podpora'],
+            disadvantages: ['Omezená doba trvání', 'Některé funkce mohou být nedostupné']
         },
         '3MesicniVIP': {
             title: '3 Months VIP',
             priceCZK: 499,
-            priceEUR: 19.9
+            priceEUR: 19.9,
+            advantages: ['Všechny výhody měsíčního VIP', 'Delší doba trvání', '10% sleva oproti měsíčnímu VIP'],
+            disadvantages: ['Vyšší jednorázová cena']
         },
         '6MesicniVIP': {
             title: '6 Months VIP',
             priceCZK: 999,
-            priceEUR: 39.9
+            priceEUR: 39.9,
+            advantages: ['Všechny výhody VIP', 'Nejdelší doba trvání', '30% sleva oproti měsíčnímu VIP'],
+            disadvantages: ['Nejvyšší jednorázová cena']
         },
         '100Korunek': {
             title: '100 Korunek',
             priceCZK: 100,
-            priceEUR: 4
+            priceEUR: 4,
+            advantages: ['Okamžité připsání na účet', 'Možnost nákupu různých herních předmětů'],
+            disadvantages: ['Omezené množství']
         },
         '300Korunek': {
             title: '200 Korunek',
             priceCZK: 200,
-            priceEUR: 8
+            priceEUR: 8,
+            advantages: ['Větší množství korunek', 'Lepší poměr cena/hodnota'],
+            disadvantages: ['Vyšší jednorázová cena']
         },
         '600Korunek': {
             title: '600 Korunek',
             priceCZK: 600,
-            priceEUR: 24
+            priceEUR: 24,
+            advantages: ['Největší množství korunek', 'Nejlepší poměr cena/hodnota'],
+            disadvantages: ['Nejvyšší jednorázová cena']
         }
     };
 
@@ -372,6 +488,20 @@
         const popupHTML = `
             <div class="item-popup">
                 <h2>${info.title}</h2>
+                <div class="item-details">
+                    <div class="advantages">
+                        <h3>Výhody:</h3>
+                        <ul>
+                            ${info.advantages.map(adv => `<li>${adv}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div class="disadvantages">
+                        <h3>Nevýhody:</h3>
+                        <ul>
+                            ${info.disadvantages.map(dis => `<li>${dis}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
                 <div class="quantity-control">
                     <button class="quantity-btn minus">-</button>
                     <input type="number" class="quantity-input" value="1" min="1" max="10">
@@ -382,20 +512,9 @@
             </div>
         `;
 
-        const popupElement = document.createElement('div');
-        popupElement.innerHTML = popupHTML;
-        document.body.appendChild(popupElement);
+        showPopup(popupHTML);
 
-        const popup = popupElement.querySelector('.item-popup');
-        popup.style.opacity = '0';
-        popup.style.transform = 'scale(0.8)';
-
-        overlay.style.display = 'block';
-        setTimeout(() => {
-            popup.style.opacity = '1';
-            popup.style.transform = 'scale(1)';
-        }, 10);
-
+        const popup = document.querySelector('.item-popup');
         const quantityInput = popup.querySelector('.quantity-input');
         const minusBtn = popup.querySelector('.minus');
         const plusBtn = popup.querySelector('.plus');
@@ -425,25 +544,57 @@
         quantityInput.addEventListener('change', updatePrice);
 
         buyBtn.addEventListener('click', function() {
-            const nickname = prompt('Zadejte svůj Minecraft nickname:');
+            showNicknamePopup(item, price, currency, quantityInput.value);
+        });
+    }
+
+    function showNicknamePopup(item, price, currency, quantity) {
+        const nicknamePopupHTML = `
+            <div class="nickname-popup">
+                <h2>Zadejte svůj Minecraft nick</h2>
+                <p>Potřebujeme znát váš Minecraft nick, abychom vám mohli přidělit zakoupenou odměnu na správný účet. Tento nick bude použit pouze pro účely přidělení vaší odměny a nebude sdílen s třetími stranami.</p>
+                <input type="text" id="minecraft-nick" placeholder="Váš Minecraft nick">
+                <button class="btn btn-primary confirm-btn">Potvrdit</button>
+            </div>
+        `;
+
+        showPopup(nicknamePopupHTML);
+
+        const confirmBtn = document.querySelector('.confirm-btn');
+        confirmBtn.addEventListener('click', function() {
+            const nickname = document.getElementById('minecraft-nick').value;
             if (nickname) {
-                const quantity = parseInt(quantityInput.value);
                 const totalPrice = (price * quantity).toFixed(2);
-                const url = `https://platby.hostify.cz/87484?currency=${currency}&payment=${encodeURIComponent(info.title)}&player=${encodeURIComponent(nickname)}&quantity=${quantity}&price=${totalPrice}`;
+                const url = `https://platby.hostify.cz/87484?currency=${currency}&payment=${encodeURIComponent(itemInfo[item].title)}&player=${encodeURIComponent(nickname)}&quantity=${quantity}&price=${totalPrice}`;
                 window.location.href = url;
+            } else {
+                alert('Prosím, zadejte svůj Minecraft nick.');
             }
         });
+    }
+
+    function showPopup(content) {
+        const popupContainer = document.createElement('div');
+        popupContainer.className = 'popup-container';
+        popupContainer.innerHTML = content;
+        document.body.appendChild(popupContainer);
+
+        overlay.style.display = 'block';
+        setTimeout(() => {
+            popupContainer.style.opacity = '1';
+            popupContainer.querySelector('div').style.transform = 'scale(1)';
+        }, 10);
 
         overlay.addEventListener('click', closePopup);
     }
 
     function closePopup() {
-        const popup = document.querySelector('.item-popup');
-        if (popup) {
-            popup.style.opacity = '0';
-            popup.style.transform = 'scale(0.8)';
+        const popupContainer = document.querySelector('.popup-container');
+        if (popupContainer) {
+            popupContainer.style.opacity = '0';
+            popupContainer.querySelector('div').style.transform = 'scale(0.8)';
             setTimeout(() => {
-                popup.remove();
+                popupContainer.remove();
                 overlay.style.display = 'none';
             }, 300);
         }

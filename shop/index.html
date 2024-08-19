@@ -577,7 +577,7 @@
             const eurBtn = document.getElementById('eur-btn');
             const czkPrices = document.querySelectorAll('.Cena-czk');
             const eurPrices = document.querySelectorAll('.Cena-eur');
-            const moreButtons = document.querySelectorAll('.btn-more');
+            const moreButtons = document.querySelectorAll('.btn-primary.btn-sm');
             const overlay = document.getElementById('overlay');
 
             overlay.style.display = 'none';
@@ -656,7 +656,7 @@
 
             moreButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    const item = this.getAttribute('data-item');
+                    const item = this.closest('.card-body').querySelector('h5').textContent.trim().split(' ')[0];
                     showItemDetails(item);
                 });
             });

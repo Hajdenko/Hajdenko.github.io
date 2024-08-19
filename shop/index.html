@@ -73,6 +73,55 @@
             background-color: rgba(0, 0, 0, 0.7);
             z-index: 999;
         }
+        
+        .item-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background-color: #011120;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-control {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .quantity-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            margin: 0 10px;
+            font-size: 18px;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .buy-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>
@@ -247,58 +296,159 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // ... (previous JavaScript for currency switching remains the same) ...
+    const czkBtn = document.getElementById('czk-btn');
+    const eurBtn = document.getElementById('eur-btn');
+    const czkPrices = document.querySelectorAll('.Cena-czk');
+    const eurPrices = document.querySelectorAll('.Cena-eur');
+    const moreButtons = document.querySelectorAll('.btn-more');
+    const overlay = document.getElementById('overlay');
 
-            const moreButtons = document.querySelectorAll('.btn-more');
-            const itemDetails = document.getElementById('itemDetails');
-            const overlay = document.getElementById('overlay');
-            const buyButton = document.getElementById('buyButton');
-            const itemTitle = document.getElementById('itemTitle');
-            const itemDescription = document.getElementById('itemDescription');
+    czkBtn.addEventListener('click', () => switchCurrency('czk'));
+    eurBtn.addEventListener('click', () => switchCurrency('eur'));
 
-            const itemInfo = {
-                '1_month_vip': {
-                    title: '1 Month VIP',
-                    description: '<h3>Výhody:</h3><ul><li>Přístup k VIP oblastem</li><li>Exkluzivní herní výhody</li></ul><h3>Nevýhody:</h3><ul><li>Omezená doba trvání</li></ul>',
-                    priceCZK: '199 CZK',
-                    priceEUR: '8 EUR'
-                },
-                // ... (add other items here) ...
-            };
+    function switchCurrency(currency) {
+        if (currency === 'czk') {
+            czkBtn.classList.add('btn-primary');
+            czkBtn.classList.remove('btn-secondary');
+            eurBtn.classList.add('btn-secondary');
+            eurBtn.classList.remove('btn-primary');
+            czkPrices.forEach(price => price.style.display = 'inline');
+            eurPrices.forEach(price => price.style.display = 'none');
+        } else {
+            eurBtn.classList.add('btn-primary');
+            eurBtn.classList.remove('btn-secondary');
+            czkBtn.classList.add('btn-secondary');
+            czkBtn.classList.remove('btn-primary');
+            eurPrices.forEach(price => price.style.display = 'inline');
+            czkPrices.forEach(price => price.style.display = 'none');
+        }
+    }
 
-            moreButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const item = this.getAttribute('data-item');
-                    showItemDetails(item);
-                });
-            });
+    const itemInfo = {
+        'MesicniVIP': {
+            title: '1 Month VIP',
+            priceCZK: 199,
+            priceEUR: 8
+        },
+        '3MesicniVIP': {
+            title: '3 Months VIP',
+            priceCZK: 499,
+            priceEUR: 19.9
+        },
+        '6MesicniVIP': {
+            title: '6 Months VIP',
+            priceCZK: 999,
+            priceEUR: 39.9
+        },
+        '100Korunek': {
+            title: '100 Korunek',
+            priceCZK: 100,
+            priceEUR: 4
+        },
+        '300Korunek': {
+            title: '200 Korunek',
+            priceCZK: 200,
+            priceEUR: 8
+        },
+        '600Korunek': {
+            title: '600 Korunek',
+            priceCZK: 600,
+            priceEUR: 24
+        }
+    };
 
-            function showItemDetails(item) {
-                const info = itemInfo[item];
-                itemTitle.textContent = info.title;
-                itemDescription.innerHTML = info.description;
-                buyButton.setAttribute('data-item', item);
-                itemDetails.style.display = 'block';
-                overlay.style.display = 'block';
-            }
-
-            overlay.addEventListener('click', function() {
-                itemDetails.style.display = 'none';
-                overlay.style.display = 'none';
-            });
-
-            buyButton.addEventListener('click', function() {
-                const item = this.getAttribute('data-item');
-                const nickname = prompt('Zadejte svůj Minecraft nickname:');
-                if (nickname) {
-                    const info = itemInfo[item];
-                    const currency = document.querySelector('#czk-btn').classList.contains('btn-primary') ? 'CZK' : 'EUR';
-                    const price = currency === 'CZK' ? info.priceCZK : info.priceEUR;
-                    const url = `https://platby.hostify.cz/87484?currency=${currency}&payment=${encodeURIComponent(info.title)}&player=${encodeURIComponent(nickname)}`;
-                    window.location.href = url;
-                }
-            });
+    moreButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const item = this.getAttribute('data-item');
+            showItemDetails(item);
         });
+    });
+
+    function showItemDetails(item) {
+        const info = itemInfo[item];
+        const currency = czkBtn.classList.contains('btn-primary') ? 'CZK' : 'EUR';
+        const price = currency === 'CZK' ? info.priceCZK : info.priceEUR;
+
+        const popupHTML = `
+            <div class="item-popup">
+                <h2>${info.title}</h2>
+                <div class="quantity-control">
+                    <button class="quantity-btn minus">-</button>
+                    <input type="number" class="quantity-input" value="1" min="1" max="10">
+                    <button class="quantity-btn plus">+</button>
+                </div>
+                <p class="price">${price} ${currency}</p>
+                <button class="btn btn-primary buy-btn" data-item="${item}">Zakoupit</button>
+            </div>
+        `;
+
+        const popupElement = document.createElement('div');
+        popupElement.innerHTML = popupHTML;
+        document.body.appendChild(popupElement);
+
+        const popup = popupElement.querySelector('.item-popup');
+        popup.style.opacity = '0';
+        popup.style.transform = 'scale(0.8)';
+
+        overlay.style.display = 'block';
+        setTimeout(() => {
+            popup.style.opacity = '1';
+            popup.style.transform = 'scale(1)';
+        }, 10);
+
+        const quantityInput = popup.querySelector('.quantity-input');
+        const minusBtn = popup.querySelector('.minus');
+        const plusBtn = popup.querySelector('.plus');
+        const priceElement = popup.querySelector('.price');
+        const buyBtn = popup.querySelector('.buy-btn');
+
+        function updatePrice() {
+            const quantity = parseInt(quantityInput.value);
+            const totalPrice = (price * quantity).toFixed(2);
+            priceElement.textContent = `${totalPrice} ${currency}`;
+        }
+
+        minusBtn.addEventListener('click', () => {
+            if (quantityInput.value > 1) {
+                quantityInput.value = parseInt(quantityInput.value) - 1;
+                updatePrice();
+            }
+        });
+
+        plusBtn.addEventListener('click', () => {
+            if (quantityInput.value < 10) {
+                quantityInput.value = parseInt(quantityInput.value) + 1;
+                updatePrice();
+            }
+        });
+
+        quantityInput.addEventListener('change', updatePrice);
+
+        buyBtn.addEventListener('click', function() {
+            const nickname = prompt('Zadejte svůj Minecraft nickname:');
+            if (nickname) {
+                const quantity = parseInt(quantityInput.value);
+                const totalPrice = (price * quantity).toFixed(2);
+                const url = `https://platby.hostify.cz/87484?currency=${currency}&payment=${encodeURIComponent(info.title)}&player=${encodeURIComponent(nickname)}&quantity=${quantity}&price=${totalPrice}`;
+                window.location.href = url;
+            }
+        });
+
+        overlay.addEventListener('click', closePopup);
+    }
+
+    function closePopup() {
+        const popup = document.querySelector('.item-popup');
+        if (popup) {
+            popup.style.opacity = '0';
+            popup.style.transform = 'scale(0.8)';
+            setTimeout(() => {
+                popup.remove();
+                overlay.style.display = 'none';
+            }, 300);
+        }
+    }
+});
     </script>
 </body>
 </html>

@@ -643,7 +643,7 @@
                     const nickname = document.getElementById('minecraft-nick').value;
                     if (nickname) {
                         const totalPrice = (price).toFixed(2);
-                        const url = `https://platby.hostify.cz/87484?currency=${currency}&payment=${encodeURIComponent(itemInfo[item].title)}&player=${encodeURIComponent(nickname)}`;
+                        const url = `https://platby.hostify.cz/87484?currency=${currency}&payment=${encodeURIComponent(itemInfo[item])}&player=${encodeURIComponent(nickname)}`;
                         window.location.href = url;
                     } else {
                         alert('Musíš zadat svůj Minecraft Nickname!');

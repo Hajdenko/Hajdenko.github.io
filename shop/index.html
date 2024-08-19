@@ -157,7 +157,7 @@
         #minecraft-nick {
             width: 100%;
             padding: 10px;
-            margin-bottom: 20px;
+            margin-bottom: .5em;
             font-size: 16px;
         }
 
@@ -635,9 +635,9 @@
             function showNicknamePopup(item, price, currency) {
                 const nicknamePopupHTML = `
                     <div class="nickname-popup">
-                        <h2>Zadejte svůj Minecraft nick‎ ‎ ‎‎  ‎ ‎  ‎‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎  ‎ ‎ ‎‎  ‎ ‎ </h2>
-                        <p>Potřebujeme znát váš Minecraft nick, abychom vám mohli přidělit zakoupenou odměnu na správný účet. Tento nick bude použit pouze pro účely přidělení vaší odměny a nebude sdílen s třetími stranami.</p>
+                        <h2>Zadejte svůj Minecraft nick‎</h2>
                         <input type="text" id="minecraft-nick" placeholder="Váš Minecraft nick">
+                        <p>Potřebujeme znát váš Minecraft nick, abychom vám mohli přidělit zakoupenou odměnu na správný účet. Tento nick bude použit pouze pro účely přidělení vaší odměny a nebude sdílen s třetími stranami.</p>
                         <button class="btn btn-primary confirm-btn">Potvrdit</button>
                     </div>
                 `;
@@ -658,11 +658,17 @@
             }
 
             function showPopup(content) {
-                const existingPopup = document.querySelector('.popup-container');
                 const arrowIcon = `
                     <span class="mbri-left close-icon" style="position: absolute; top: 10px; left: 10px; font-size: 24px; cursor: pointer;"></span>
                 `;
-                const popupContent = arrowIcon + content;
+                const popupContent = `
+                    <div style="position: relative;">
+                        ${arrowIcon}
+                        ${content}
+                    </div>
+                `;
+            
+                const existingPopup = document.querySelector('.popup-container');
             
                 if (existingPopup) {
                     const newPopupContainer = document.createElement('div');

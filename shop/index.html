@@ -189,6 +189,13 @@
         body.popup-open {
             overflow: hidden;
         }
+a.sale {
+    color: cornsilk;
+}
+
+a.sale:hover {
+    cursor:text;
+}
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -262,14 +269,20 @@ input[type=number] {
                     </div>
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">3 Months VIP (10% OFF)</h5>
+                            <h5 class="card-title">
+                                3 Months VIP 
+                                <a class="sale">(10% OFF)</a>
+                            </h5>
                             <p class="card-text">Cena: <span class="Cena-czk">499 CZK</span><span class="Cena-eur" style="display:none;">19.9 EUR</span></p>
                             <button class="btn btn-primary btn-more" data-item="3MesicniVIP">Více</button>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">6 Months VIP (30% OFF)</h5>
+                            <h5 class="card-title">
+                                6 Months VIP
+                                <a class="sale">(30% OFF)</a>
+                            </h5>
                             <p class="card-text">Cena: <span class="Cena-czk">999 CZK</span><span class="Cena-eur" style="display:none;">39.9 EUR</span></p>
                             <button class="btn btn-primary btn-more" data-item="6MesicniVIP">Více</button>
                         </div>

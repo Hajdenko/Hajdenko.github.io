@@ -528,12 +528,13 @@
             const eurPrices = document.querySelectorAll('.Cena-eur');
             const moreButtons = document.querySelectorAll('.btn-primary');
             const overlay = document.getElementById('overlay');
-        
+            let currentItem = null; // Track the current item
+    
             overlay.style.display = 'none';
-        
+    
             czkBtn.addEventListener('click', () => switchCurrency('czk'));
             eurBtn.addEventListener('click', () => switchCurrency('eur'));
-        
+    
             function switchCurrency(currency) {
                 if (currency === 'czk') {
                     czkBtn.classList.add('btn-primary');
@@ -551,7 +552,7 @@
                     czkPrices.forEach(price => price.style.display = 'none');
                 }
             }
-        
+    
             const itemInfo = {
                 'MesicniVIP': {
                     baseName: 'MesicniVIP',
@@ -583,7 +584,7 @@
                     priceCZK: 99,
                     priceEUR: 4,
                     advantages: ['Možnost zakoupení VIP', 'Možnost zakoupení Teamu', 'Možnost zakoupení Korunka Klíče.'],
-                    disadvantages: ['Není možné mít 2x /home', 'Stále dostáváš kick za AFK', 'Stále dostáváš pouze jednu korunku za 15 minut hraní.']
+                    disadvantages: ['Pouze 1x /sethome', 'Dostáváš kick za AFK', 'Dostáváš pouze jednu korunku za 15 minut hraní.']
                 },
                 '200Korunek': {
                     baseName: '200Korunek',
@@ -591,7 +592,7 @@
                     priceCZK: 199,
                     priceEUR: 8,
                     advantages: ['Možnost zakoupení VIP', 'Možnost zakoupení Teamu', 'Možnost zakoupení Korunka Klíče.'],
-                    disadvantages: ['Není možné mít 2x /home', 'Stále dostáváš kick za AFK', 'Stále dostáváš pouze jednu korunku za 15 minut hraní.']
+                    disadvantages: ['Pouze 1x /sethome', 'Dostáváš kick za AFK', 'Dostáváš pouze jednu korunku za 15 minut hraní.']
                 },
                 '600Korunek': {
                     baseName: '600Korunek',
@@ -599,22 +600,23 @@
                     priceCZK: 499,
                     priceEUR: 24,
                     advantages: ['Možnost zakoupení VIP', 'Možnost zakoupení Teamu', 'Možnost zakoupení Korunka Klíče.'],
-                    disadvantages: ['Není možné mít 2x /home', 'Stále dostáváš kick za AFK', 'Stále dostáváš pouze jednu korunku za 15 minut hraní.']
+                    disadvantages: ['Pouze 1x /sethome', 'Dostáváš kick za AFK', 'Dostáváš pouze jednu korunku za 15 minut hraní.']
                 }
             };
-        
+    
             moreButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const item = this.getAttribute('data-item');
+                    currentItem = item;
                     showItemDetails(item);
                 });
             });
-        
+    
             function showItemDetails(item) {
                 const info = itemInfo[item];
                 const currency = czkBtn.classList.contains('btn-primary') ? 'CZK' : 'EUR';
                 const price = currency === 'CZK' ? info.priceCZK : info.priceEUR;
-        
+    
                 const popupHTML = `
                     <div class="item-popup">
                         <span class="mbri-left close-icon"></span>
@@ -637,17 +639,18 @@
                         <button class="btn btn-primary buy-btn" data-item="${item}">Zakoupit</button>
                     </div>
                 `;
-        
+    
+                closeAllPopups();
                 showPopup(popupHTML);
-        
+    
                 const popup = document.querySelector('.item-popup');
                 const buyBtn = popup.querySelector('.buy-btn');
-        
+    
                 buyBtn.addEventListener('click', function() {
                     showNicknamePopup(item, price, currency);
                 });
             }
-        
+    
             function showNicknamePopup(item, price, currency) {
                 const nicknamePopupHTML = `
                     <div class="nickname-popup">
@@ -658,9 +661,10 @@
                         <button class="btn btn-primary confirm-btn">Potvrdit</button>
                     </div>
                 `;
-        
+    
+                closeAllPopups();
                 showPopup(nicknamePopupHTML);
-        
+    
                 const confirmBtn = document.querySelector('.confirm-btn');
                 confirmBtn.addEventListener('click', function() {
                     const nickname = document.getElementById('minecraft-nick').value;
@@ -671,56 +675,34 @@
                         alert('Musíš zadat svůj Minecraft Nickname!');
                     }
                 });
+    
+                const backIcon = document.querySelector('.minecraft-left');
+                backIcon.addEventListener('click', function() {
+                    showItemDetails(currentItem);
+                });
             }
-        
+    
             function showPopup(content) {
-                const existingPopup = document.querySelector('.popup-container');
-                if (existingPopup) {
-                    const newPopupContainer = document.createElement('div');
-                    newPopupContainer.className = 'popup-container';
-                    newPopupContainer.innerHTML = content;
-                    document.body.appendChild(newPopupContainer);
-                    setTimeout(() => {
-                        newPopupContainer.style.opacity = '1';
-                        newPopupContainer.querySelector('div').style.transform = 'scale(1)';
-                    }, 10);
-                } else {
-                    const popupContainer = document.createElement('div');
-                    popupContainer.className = 'popup-container';
-                    popupContainer.innerHTML = content;
-                    document.body.appendChild(popupContainer);
-                    overlay.style.display = 'block';
-                    document.body.style.overflow = 'hidden';
-                    setTimeout(() => {
-                        popupContainer.style.opacity = '1';
-                        popupContainer.querySelector('div').style.transform = 'scale(1)';
-                    }, 10);
-                }
-        
+                const popupContainer = document.createElement('div');
+                popupContainer.className = 'popup-container';
+                popupContainer.innerHTML = content;
+                document.body.appendChild(popupContainer);
+                overlay.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+                setTimeout(() => {
+                    popupContainer.style.opacity = '1';
+                    popupContainer.querySelector('div').style.transform = 'scale(1)';
+                }, 10);
+    
                 const closeIcons = document.querySelectorAll('.close-icon');
                 closeIcons.forEach(icon => {
                     icon.addEventListener('click', closePopup);
                 });
-        
-                const closePopupOnOutsideClick = (e) => {
-                    const popups = document.querySelectorAll('.popup-container');
-                    const topPopup = popups[popups.length - 1];
-                    if (e.target === topPopup) {
-                        closePopup();
-                    }
-                };
-        
+    
                 document.addEventListener('click', closePopupOnOutsideClick);
-        
-                const closePopupOnEscape = (e) => {
-                    if (e.key === 'Escape') {
-                        closePopup();
-                    }
-                };
-        
                 document.addEventListener('keydown', closePopupOnEscape);
             }
-        
+    
             function closePopup() {
                 const popups = document.querySelectorAll('.popup-container');
                 if (popups.length > 0) {
@@ -735,6 +717,29 @@
                         }
                     }, 300);
                 }
+            }
+    
+            function closePopupOnOutsideClick(e) {
+                const popups = document.querySelectorAll('.popup-container');
+                const topPopup = popups[popups.length - 1];
+                if (e.target === topPopup) {
+                    closePopup();
+                }
+            }
+    
+            function closePopupOnEscape(e) {
+                if (e.key === 'Escape') {
+                    closePopup();
+                }
+            }
+    
+            function closeAllPopups() {
+                const popups = document.querySelectorAll('.popup-container');
+                popups.forEach(popup => {
+                    popup.remove();
+                });
+                overlay.style.display = 'none';
+                document.body.style.overflow = '';
             }
         });
     </script>

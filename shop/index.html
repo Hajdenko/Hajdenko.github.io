@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
     <link rel="shortcut icon" href="../assets/images/hnl.png" type="image/x-icon">
-    <meta name="description" content="HnL SMP Shop - Buy VIP and Korunky">
+    <meta name="description" content="HnL SMP | Shop">
 
     <title>HnL SMP | Obchod</title>
     <link rel="stylesheet" href="../assets/web/assets/mobirise-icons2/mobirise2.css">
@@ -215,6 +215,15 @@
         input[type=number] {
             -moz-appearance: textfield;
         }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .section-title i {
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
@@ -267,8 +276,8 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-12 col-md-6">
-                    <h3 class="mbr-section-subtitle align-center mb-4 display-5">
-                        VIP
+                    <h3 class="mbr-section-subtitle align-center mb-4 display-5 section-title">
+                        <i class="mbri-star"></i> VIP
                     </h3>
                     <div class="card">
                         <div class="card-body">
@@ -299,8 +308,8 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-6">
-                    <h3 class="mbr-section-subtitle align-center mb-4 display-5">
-                        Korunky
+                    <h3 class="mbr-section-subtitle align-center mb-4 display-5 section-title">
+                        <i class="mbri-cash"></i> Korunky
                     </h3>
                     <div class="card">
                         <div class="card-body">
@@ -587,40 +596,60 @@
             }
 
             function showPopup(content) {
-                const popupContainer = document.createElement('div');
-                popupContainer.className = 'popup-container';
-                popupContainer.innerHTML = content;
-                document.body.appendChild(popupContainer);
+                const existingPopup = document.querySelector('.popup-container');
+                if (existingPopup) {
+                    const newPopupContainer = document.createElement('div');
+                    newPopupContainer.className = 'popup-container';
+                    newPopupContainer.innerHTML = content;
+                    document.body.appendChild(newPopupContainer);
+                    setTimeout(() => {
+                        newPopupContainer.style.opacity = '1';
+                        newPopupContainer.querySelector('div').style.transform = 'scale(1)';
+                    }, 10);
+                } else {
+                    const popupContainer = document.createElement('div');
+                    popupContainer.className = 'popup-container';
+                    popupContainer.innerHTML = content;
+                    document.body.appendChild(popupContainer);
+                    overlay.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                    setTimeout(() => {
+                        popupContainer.style.opacity = '1';
+                        popupContainer.querySelector('div').style.transform = 'scale(1)';
+                    }, 10);
+                }
 
-                overlay.style.display = 'block';
-                document.body.style.overflow = 'hidden'; // Prevent scrolling on the main page
-                setTimeout(() => {
-                    popupContainer.style.opacity = '1';
-                    popupContainer.querySelector('div').style.transform = 'scale(1)';
-                }, 10);
-
-                overlay.addEventListener('click', (e) => {
-                    if (e.target === overlay) {
+                const closePopupOnOutsideClick = (e) => {
+                    const popups = document.querySelectorAll('.popup-container');
+                    const topPopup = popups[popups.length - 1];
+                    if (e.target === topPopup) {
                         closePopup();
                     }
-                });
+                };
 
-                document.addEventListener('keydown', (e) => {
+                document.addEventListener('click', closePopupOnOutsideClick);
+
+                const closePopupOnEscape = (e) => {
                     if (e.key === 'Escape') {
                         closePopup();
                     }
-                });
+                };
+
+                document.addEventListener('keydown', closePopupOnEscape);
             }
 
             function closePopup() {
-                const popupContainer = document.querySelector('.popup-container');
-                if (popupContainer) {
-                    popupContainer.style.opacity = '0';
-                    popupContainer.querySelector('div').style.transform = 'scale(0.8)';
+                const popups = document.querySelectorAll('.popup-container');
+                if (popups.length > 0) {
+                    const topPopup = popups[popups.length - 1];
+                    topPopup.style.opacity = '0';
+                    topPopup.querySelector('div').style.transform = 'scale(0.8)';
                     setTimeout(() => {
-                        popupContainer.remove();
-                        overlay.style.display = 'none';
-                        document.body.style.overflow = '';
+                        topPopup.remove();
+                        if (popups.length === 1) {
+                            overlay.style.display = 'none';
+                            document.body.style.overflow = '';
+                        }
                     }, 300);
                 }
             }

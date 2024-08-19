@@ -250,6 +250,9 @@
                 font-size: 0 !important;
             }
         }
+        span.mbri-left.close-icon.minecraft-left {
+            top: 1.3em !important;
+        }
     </style>
 </head>
 <body>
@@ -649,6 +652,7 @@
             function showNicknamePopup(item, price, currency) {
                 const nicknamePopupHTML = `
                     <div class="nickname-popup">
+                        <span class="mbri-left close-icon minecraft-left"></span>
                         <h2>Zadejte svůj Minecraft nick‎</h2>
                         <input type="text" id="minecraft-nick" placeholder="Váš Minecraft nick">
                         <p>Potřebujeme znát váš Minecraft nick, abychom vám mohli přidělit zakoupenou odměnu na správný účet. Tento nick bude použit pouze pro účely přidělení vaší odměny a nebude sdílen s třetími stranami.</p>
@@ -694,7 +698,13 @@
                         popupContainer.querySelector('div').style.transform = 'scale(1)';
                     }, 10);
                 }
-
+            
+                // Add event listener to close icons
+                const closeIcons = document.querySelectorAll('.close-icon');
+                closeIcons.forEach(icon => {
+                    icon.addEventListener('click', closePopup);
+                });
+            
                 const closePopupOnOutsideClick = (e) => {
                     const popups = document.querySelectorAll('.popup-container');
                     const topPopup = popups[popups.length - 1];
@@ -702,15 +712,15 @@
                         closePopup();
                     }
                 };
-
+            
                 document.addEventListener('click', closePopupOnOutsideClick);
-
+            
                 const closePopupOnEscape = (e) => {
                     if (e.key === 'Escape') {
                         closePopup();
                     }
                 };
-
+            
                 document.addEventListener('keydown', closePopupOnEscape);
             }
 

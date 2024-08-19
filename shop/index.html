@@ -73,145 +73,148 @@
             background-color: rgba(0, 0, 0, 0.7);
             z-index: 999;
         }
-span.Cena-czk {
-    color: palegoldenrod;
-}
+        
+        span.Cena-czk {
+            color: palegoldenrod;
+        }
+        span.Cena-eur {
+            color: palegoldenrod;
+        }
+        
+        .popup-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            overflow-y: auto;
+            padding: 20px;
+        }
 
-span.Cena-eur {
-    color: palegoldenrod;
-}
-.popup-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1001;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    overflow-y: auto;
-    padding: 20px;
-}
+        .item-popup, .nickname-popup {
+            background-color: rgba(30, 30, 30, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: visible;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: auto;
+        }
 
-.item-popup, .nickname-popup {
-    background-color: rgba(30, 30, 30, 0.9);
-    padding: 30px;
-    border-radius: 10px;
-    max-width: 500px;
-    width: 90%;
-    max-height: 80vh;
-    overflow-y: visible;
-    transform: scale(0.8);
-    transition: transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: auto;
-}
+        .item-popup h2, .nickname-popup h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-.item-popup h2, .nickname-popup h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
+        .item-details {
+            margin-bottom: 20px;
+            width: 100%;
+        }
 
-.item-details {
-    margin-bottom: 20px;
-    width: 100%;
-}
+        .advantages, .disadvantages {
+            margin-bottom: 15px;
+        }
 
-.advantages, .disadvantages {
-    margin-bottom: 15px;
-}
+        .advantages h3, .disadvantages h3 {
+            margin-bottom: 10px;
+        }
 
-.advantages h3, .disadvantages h3 {
-    margin-bottom: 10px;
-}
+        .advantages ul, .disadvantages ul {
+            padding-left: 20px;
+        }
 
-.advantages ul, .disadvantages ul {
-    padding-left: 20px;
-}
+        .quantity-control {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
 
-.quantity-control {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
-}
+        .quantity-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 18px;
+        }
 
-.quantity-btn {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    font-size: 18px;
-}
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            margin: 0 10px;
+            font-size: 18px;
+        }
 
-.quantity-input {
-    width: 50px;
-    text-align: center;
-    margin: 0 10px;
-    font-size: 18px;
-}
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+        }
 
-.price {
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-    margin: 20px 0;
-}
+        .buy-btn, .confirm-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+        }
 
-.buy-btn, .confirm-btn {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    font-size: 18px;
-}
+        .nickname-popup p {
+            margin-bottom: 20px;
+            text-align: center;
+        }
 
-.nickname-popup p {
-    margin-bottom: 20px;
-    text-align: center;
-}
+        #minecraft-nick {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
 
-#minecraft-nick {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    font-size: 16px;
-}
-
-#overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 1000;
-    display: none; /* Hide overlay by default */
-}
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            display: none;
+        }
+        
         body.popup-open {
             overflow: hidden;
         }
-a.sale {
-    color: cornsilk;
-}
+        
+        a.sale {
+            color: cornsilk;
+        }
+        a.sale:hover {
+            cursor:text;
+        }
+        
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
 
-a.sale:hover {
-    cursor:text;
-}
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-input[type=number] {
-    -moz-appearance: textfield;
-}
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
     </style>
 </head>
 <body>
@@ -392,236 +395,236 @@ input[type=number] {
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-    const czkBtn = document.getElementById('czk-btn');
-    const eurBtn = document.getElementById('eur-btn');
-    const czkPrices = document.querySelectorAll('.Cena-czk');
-    const eurPrices = document.querySelectorAll('.Cena-eur');
-    const moreButtons = document.querySelectorAll('.btn-more');
-    const overlay = document.getElementById('overlay');
+            const czkBtn = document.getElementById('czk-btn');
+            const eurBtn = document.getElementById('eur-btn');
+            const czkPrices = document.querySelectorAll('.Cena-czk');
+            const eurPrices = document.querySelectorAll('.Cena-eur');
+            const moreButtons = document.querySelectorAll('.btn-more');
+            const overlay = document.getElementById('overlay');
 
-    overlay.style.display = 'none';
+            overlay.style.display = 'none';
 
-    czkBtn.addEventListener('click', () => switchCurrency('czk'));
-    eurBtn.addEventListener('click', () => switchCurrency('eur'));
+            czkBtn.addEventListener('click', () => switchCurrency('czk'));
+            eurBtn.addEventListener('click', () => switchCurrency('eur'));
 
-    function switchCurrency(currency) {
-        if (currency === 'czk') {
-            czkBtn.classList.add('btn-primary');
-            czkBtn.classList.remove('btn-secondary');
-            eurBtn.classList.add('btn-secondary');
-            eurBtn.classList.remove('btn-primary');
-            czkPrices.forEach(price => price.style.display = 'inline');
-            eurPrices.forEach(price => price.style.display = 'none');
-        } else {
-            eurBtn.classList.add('btn-primary');
-            eurBtn.classList.remove('btn-secondary');
-            czkBtn.classList.add('btn-secondary');
-            czkBtn.classList.remove('btn-primary');
-            eurPrices.forEach(price => price.style.display = 'inline');
-            czkPrices.forEach(price => price.style.display = 'none');
-        }
-    }
+            function switchCurrency(currency) {
+                if (currency === 'czk') {
+                    czkBtn.classList.add('btn-primary');
+                    czkBtn.classList.remove('btn-secondary');
+                    eurBtn.classList.add('btn-secondary');
+                    eurBtn.classList.remove('btn-primary');
+                    czkPrices.forEach(price => price.style.display = 'inline');
+                    eurPrices.forEach(price => price.style.display = 'none');
+                } else {
+                    eurBtn.classList.add('btn-primary');
+                    eurBtn.classList.remove('btn-secondary');
+                    czkBtn.classList.add('btn-secondary');
+                    czkBtn.classList.remove('btn-primary');
+                    eurPrices.forEach(price => price.style.display = 'inline');
+                    czkPrices.forEach(price => price.style.display = 'none');
+                }
+            }
 
-    const itemInfo = {
-        'MesicniVIP': {
-            title: '1 Month VIP',
-            priceCZK: 199,
-            priceEUR: 8,
-            advantages: ['Přístup k VIP oblastem', 'Exkluzivní herní výhody', 'Prioritní podpora'],
-            disadvantages: ['Omezená doba trvání', 'Některé funkce mohou být nedostupné']
-        },
-        '3MesicniVIP': {
-            title: '3 Months VIP',
-            priceCZK: 499,
-            priceEUR: 19.9,
-            advantages: ['Všechny výhody měsíčního VIP', 'Delší doba trvání', '10% sleva oproti měsíčnímu VIP'],
-            disadvantages: ['Vyšší jednorázová cena']
-        },
-        '6MesicniVIP': {
-            title: '6 Months VIP',
-            priceCZK: 999,
-            priceEUR: 39.9,
-            advantages: ['Všechny výhody VIP', 'Nejdelší doba trvání', '30% sleva oproti měsíčnímu VIP'],
-            disadvantages: ['Nejvyšší jednorázová cena']
-        },
-        '100Korunek': {
-            title: '100 Korunek',
-            priceCZK: 100,
-            priceEUR: 4,
-            advantages: ['Okamžité připsání na účet', 'Možnost nákupu různých herních předmětů'],
-            disadvantages: ['Omezené množství']
-        },
-        '300Korunek': {
-            title: '200 Korunek',
-            priceCZK: 200,
-            priceEUR: 8,
-            advantages: ['Větší množství korunek', 'Lepší poměr cena/hodnota'],
-            disadvantages: ['Vyšší jednorázová cena']
-        },
-        '600Korunek': {
-            title: '600 Korunek',
-            priceCZK: 600,
-            priceEUR: 24,
-            advantages: ['Největší množství korunek', 'Nejlepší poměr cena/hodnota'],
-            disadvantages: ['Nejvyšší jednorázová cena']
-        }
-    };
+            const itemInfo = {
+                'MesicniVIP': {
+                    title: '1 Month VIP',
+                    priceCZK: 199,
+                    priceEUR: 8,
+                    advantages: ['Přístup k VIP oblastem', 'Exkluzivní herní výhody', 'Prioritní podpora'],
+                    disadvantages: ['Omezená doba trvání', 'Některé funkce mohou být nedostupné']
+                },
+                '3MesicniVIP': {
+                    title: '3 Months VIP',
+                    priceCZK: 499,
+                    priceEUR: 19.9,
+                    advantages: ['Všechny výhody měsíčního VIP', 'Delší doba trvání', '10% sleva oproti měsíčnímu VIP'],
+                    disadvantages: ['Vyšší jednorázová cena']
+                },
+                '6MesicniVIP': {
+                    title: '6 Months VIP',
+                    priceCZK: 999,
+                    priceEUR: 39.9,
+                    advantages: ['Všechny výhody VIP', 'Nejdelší doba trvání', '30% sleva oproti měsíčnímu VIP'],
+                    disadvantages: ['Nejvyšší jednorázová cena']
+                },
+                '100Korunek': {
+                    title: '100 Korunek',
+                    priceCZK: 100,
+                    priceEUR: 4,
+                    advantages: ['Okamžité připsání na účet', 'Možnost nákupu různých herních předmětů'],
+                    disadvantages: ['Omezené množství']
+                },
+                '300Korunek': {
+                    title: '200 Korunek',
+                    priceCZK: 200,
+                    priceEUR: 8,
+                    advantages: ['Větší množství korunek', 'Lepší poměr cena/hodnota'],
+                    disadvantages: ['Vyšší jednorázová cena']
+                },
+                '600Korunek': {
+                    title: '600 Korunek',
+                    priceCZK: 600,
+                    priceEUR: 24,
+                    advantages: ['Největší množství korunek', 'Nejlepší poměr cena/hodnota'],
+                    disadvantages: ['Nejvyšší jednorázová cena']
+                }
+            };
 
-    moreButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const item = this.getAttribute('data-item');
-            showItemDetails(item);
-        });
-    });
+            moreButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const item = this.getAttribute('data-item');
+                    showItemDetails(item);
+                });
+            });
 
-    function showItemDetails(item) {
-        const info = itemInfo[item];
-        const currency = czkBtn.classList.contains('btn-primary') ? 'CZK' : 'EUR';
-        const price = currency === 'CZK' ? info.priceCZK : info.priceEUR;
+            function showItemDetails(item) {
+                const info = itemInfo[item];
+                const currency = czkBtn.classList.contains('btn-primary') ? 'CZK' : 'EUR';
+                const price = currency === 'CZK' ? info.priceCZK : info.priceEUR;
 
-        const popupHTML = `
-            <div class="item-popup">
-                <h2>${info.title}</h2>
-                <div class="item-details">
-                    <div class="advantages">
-                        <h3>Výhody:</h3>
-                        <ul>
-                            ${info.advantages.map(adv => `<li>${adv}</li>`).join('')}
-                        </ul>
+                const popupHTML = `
+                    <div class="item-popup">
+                        <h2>${info.title}</h2>
+                        <div class="item-details">
+                            <div class="advantages">
+                                <h3>Výhody:</h3>
+                                <ul>
+                                    ${info.advantages.map(adv => `<li>${adv}</li>`).join('')}
+                                </ul>
+                            </div>
+                            <div class="disadvantages">
+                                <h3>Nevýhody:</h3>
+                                <ul>
+                                    ${info.disadvantages.map(dis => `<li>${dis}</li>`).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="quantity-control">
+                            <button class="quantity-btn minus btn btn-primary" style="
+                                padding-left: .55em;
+                                padding-right: .55em;
+                                padding-top: .2em;
+                                padding-bottom: .3em;
+                            ">−</button>
+                            <input type="number" class="quantity-input" value="1" min="1" max="10" style="
+                                width: 2.3em;
+                                height: 2.5em;
+                                border-radius: 4px;
+                                border: none;
+                            ">
+                            <button class="quantity-btn plus btn btn-primary" style="
+                                padding-left: .5em;
+                                padding-left,padding-right: 5;
+                                padding-right: 0.5em;
+                                padding-top: .2em;
+                                padding-bottom: .3em;
+                            ">+</button>
+                        </div>
+                        <p class="price">${price} ${currency}</p>
+                        <button class="btn btn-primary buy-btn" data-item="${item}">Zakoupit</button>
                     </div>
-                    <div class="disadvantages">
-                        <h3>Nevýhody:</h3>
-                        <ul>
-                            ${info.disadvantages.map(dis => `<li>${dis}</li>`).join('')}
-                        </ul>
+                `;
+
+                showPopup(popupHTML);
+
+                const popup = document.querySelector('.item-popup');
+                const quantityInput = popup.querySelector('.quantity-input');
+                const minusBtn = popup.querySelector('.minus');
+                const plusBtn = popup.querySelector('.plus');
+                const priceElement = popup.querySelector('.price');
+                const buyBtn = popup.querySelector('.buy-btn');
+
+                function updatePrice() {
+                    const quantity = parseInt(quantityInput.value);
+                    const totalPrice = (price * quantity).toFixed(2);
+                    priceElement.textContent = `${totalPrice} ${currency}`;
+                }
+
+                minusBtn.addEventListener('click', () => {
+                    if (quantityInput.value > 1) {
+                        quantityInput.value = parseInt(quantityInput.value) - 1;
+                        updatePrice();
+                    }
+                });
+
+                plusBtn.addEventListener('click', () => {
+                    if (quantityInput.value < 10) {
+                        quantityInput.value = parseInt(quantityInput.value) + 1;
+                        updatePrice();
+                    }
+                });
+
+                quantityInput.addEventListener('change', updatePrice);
+
+                buyBtn.addEventListener('click', function() {
+                    showNicknamePopup(item, price, currency, quantityInput.value);
+                });
+            }
+
+            function showNicknamePopup(item, price, currency, quantity) {
+                const nicknamePopupHTML = `
+                    <div class="nickname-popup">
+                        <h2>Zadejte svůj Minecraft nick</h2>
+                        <p>Potřebujeme znát váš Minecraft nick, abychom vám mohli přidělit zakoupenou odměnu na správný účet. Tento nick bude použit pouze pro účely přidělení vaší odměny a nebude sdílen s třetími stranami.</p>
+                        <input type="text" id="minecraft-nick" placeholder="Váš Minecraft nick">
+                        <button class="btn btn-primary confirm-btn">Potvrdit</button>
                     </div>
-                </div>
-                <div class="quantity-control">
-                    <button class="quantity-btn minus btn btn-primary" style="
-                        padding-left: .55em;
-                        padding-right: .55em;
-                        padding-top: .2em;
-                        padding-bottom: .3em;
-                    ">−</button>
-                    <input type="number" class="quantity-input" value="1" min="1" max="10" style="
-                        width: 2.3em;
-                        height: 2.5em;
-                        border-radius: 4px;
-                        border: none;
-                    ">
-                    <button class="quantity-btn plus btn btn-primary" style="
-                        padding-left: .5em;
-                        padding-left,padding-right: 5;
-                        padding-right: 0.5em;
-                        padding-top: .2em;
-                        padding-bottom: .3em;
-                    ">+</button>
-                </div>
-                <p class="price">${price} ${currency}</p>
-                <button class="btn btn-primary buy-btn" data-item="${item}">Zakoupit</button>
-            </div>
-        `;
+                `;
 
-        showPopup(popupHTML);
+                showPopup(nicknamePopupHTML);
 
-        const popup = document.querySelector('.item-popup');
-        const quantityInput = popup.querySelector('.quantity-input');
-        const minusBtn = popup.querySelector('.minus');
-        const plusBtn = popup.querySelector('.plus');
-        const priceElement = popup.querySelector('.price');
-        const buyBtn = popup.querySelector('.buy-btn');
+                const confirmBtn = document.querySelector('.confirm-btn');
+                confirmBtn.addEventListener('click', function() {
+                    const nickname = document.getElementById('minecraft-nick').value;
+                    if (nickname) {
+                        const totalPrice = (price * quantity).toFixed(2);
+                        const url = `https://platby.hostify.cz/87484?currency=${currency}&payment=${encodeURIComponent(itemInfo[item].title)}&player=${encodeURIComponent(nickname)}&quantity=${quantity}&price=${totalPrice}`;
+                        window.location.href = url;
+                    } else {
+                        alert('Musíš zadat svůj Minecraft Nickname!');
+                    }
+                });
+            }
 
-        function updatePrice() {
-            const quantity = parseInt(quantityInput.value);
-            const totalPrice = (price * quantity).toFixed(2);
-            priceElement.textContent = `${totalPrice} ${currency}`;
-        }
+            function showPopup(content) {
+                const popupContainer = document.createElement('div');
+                popupContainer.className = 'popup-container';
+                popupContainer.innerHTML = content;
+                document.body.appendChild(popupContainer);
 
-        minusBtn.addEventListener('click', () => {
-            if (quantityInput.value > 1) {
-                quantityInput.value = parseInt(quantityInput.value) - 1;
-                updatePrice();
+                overlay.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling on the main page
+                setTimeout(() => {
+                    popupContainer.style.opacity = '1';
+                    popupContainer.querySelector('div').style.transform = 'scale(1)';
+                }, 10);
+
+                overlay.addEventListener('click', (e) => {
+                    if (e.target === overlay) {
+                        closePopup();
+                    }
+                });
+
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        closePopup();
+                    }
+                });
+            }
+
+            function closePopup() {
+                const popupContainer = document.querySelector('.popup-container');
+                if (popupContainer) {
+                    popupContainer.style.opacity = '0';
+                    popupContainer.querySelector('div').style.transform = 'scale(0.8)';
+                    setTimeout(() => {
+                        popupContainer.remove();
+                        overlay.style.display = 'none';
+                        document.body.style.overflow = '';
+                    }, 300);
+                }
             }
         });
-
-        plusBtn.addEventListener('click', () => {
-            if (quantityInput.value < 10) {
-                quantityInput.value = parseInt(quantityInput.value) + 1;
-                updatePrice();
-            }
-        });
-
-        quantityInput.addEventListener('change', updatePrice);
-
-        buyBtn.addEventListener('click', function() {
-            showNicknamePopup(item, price, currency, quantityInput.value);
-        });
-    }
-
-    function showNicknamePopup(item, price, currency, quantity) {
-        const nicknamePopupHTML = `
-            <div class="nickname-popup">
-                <h2>Zadejte svůj Minecraft nick</h2>
-                <p>Potřebujeme znát váš Minecraft nick, abychom vám mohli přidělit zakoupenou odměnu na správný účet. Tento nick bude použit pouze pro účely přidělení vaší odměny a nebude sdílen s třetími stranami.</p>
-                <input type="text" id="minecraft-nick" placeholder="Váš Minecraft nick">
-                <button class="btn btn-primary confirm-btn">Potvrdit</button>
-            </div>
-        `;
-
-        showPopup(nicknamePopupHTML);
-
-        const confirmBtn = document.querySelector('.confirm-btn');
-        confirmBtn.addEventListener('click', function() {
-            const nickname = document.getElementById('minecraft-nick').value;
-            if (nickname) {
-                const totalPrice = (price * quantity).toFixed(2);
-                const url = `https://platby.hostify.cz/87484?currency=${currency}&payment=${encodeURIComponent(itemInfo[item].title)}&player=${encodeURIComponent(nickname)}&quantity=${quantity}&price=${totalPrice}`;
-                window.location.href = url;
-            } else {
-                alert('Prosím, zadejte svůj Minecraft nick.');
-            }
-        });
-    }
-
-    function showPopup(content) {
-        const popupContainer = document.createElement('div');
-        popupContainer.className = 'popup-container';
-        popupContainer.innerHTML = content;
-        document.body.appendChild(popupContainer);
-
-        overlay.style.display = 'block';
-        document.body.style.overflow = 'hidden'; // Prevent scrolling on the main page
-        setTimeout(() => {
-            popupContainer.style.opacity = '1';
-            popupContainer.querySelector('div').style.transform = 'scale(1)';
-        }, 10);
-
-        overlay.addEventListener('click', (e) => {
-            if (e.target === overlay) {
-                closePopup();
-            }
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closePopup();
-            }
-        });
-    }
-
-    function closePopup() {
-        const popupContainer = document.querySelector('.popup-container');
-        if (popupContainer) {
-            popupContainer.style.opacity = '0';
-            popupContainer.querySelector('div').style.transform = 'scale(0.8)';
-            setTimeout(() => {
-                popupContainer.remove();
-                overlay.style.display = 'none';
-                document.body.style.overflow = '';
-            }, 300);
-        }
-    }
-});
     </script>
 </body>
 </html>

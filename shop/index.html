@@ -333,7 +333,7 @@
                                     <p class="card-text">Cena: <span class="Cena-czk">199 CZK</span><span class="Cena-eur" style="display:none;">8 EUR</span></p>
                                 </div>
                             </div>
-                            <button class="btn btn-primary btn-sm" style="height: 3.2em;background-color: #ffffff;color: #000000;border: none;width: 6em;">Více</button>
+                            <button class="btn btn-primary btn-sm" data-item="MesicniVIP" style="height: 3.2em;background-color: #ffffff;color: #000000;border: none;width: 6em;">Více</button>
                         </div>
                     </div>
             
@@ -348,7 +348,7 @@
                                     <p class="card-text">Cena: <span class="Cena-czk">499 CZK</span><span class="Cena-eur" style="display:none;">19.9 EUR</span></p>
                                 </div>
                             </div>
-                            <button class="btn btn-primary btn-sm" style="height: 3.2em;background-color: #ffffff;color: #000000;border: none;width: 6em;">Více</button>
+                            <button class="btn btn-primary btn-sm" data-item="3MesicniVIP" style="height: 3.2em;background-color: #ffffff;color: #000000;border: none;width: 6em;">Více</button>
                         </div>
                     </div>
             
@@ -363,7 +363,7 @@
                                     <p class="card-text">Cena: <span class="Cena-czk">999 CZK</span><span class="Cena-eur" style="display:none;">39.9 EUR</span></p>
                                 </div>
                             </div>
-                            <button class="btn btn-primary btn-sm" style="height: 3.2em;background-color: #ffffff;color: #000000;border: none;width: 6em;">Více</button>
+                            <button class="btn btn-primary btn-sm" data-item="6MesicniVIP" style="height: 3.2em;background-color: #ffffff;color: #000000;border: none;width: 6em;">Více</button>
                         </div>
                     </div>
                 </div>
@@ -383,7 +383,7 @@
                                     <p class="card-text">Cena: <span class="Cena-czk">100 CZK</span><span class="Cena-eur" style="display:none;">4 EUR</span></p>
                                 </div>
                             </div>
-                            <button class="btn btn-primary btn-sm" style="height: 3.2em;background-color: #ffffff;color: #000000;border: none;width: 6em;">Více</button>
+                            <button class="btn btn-primary btn-sm" data-item="100Korunek" style="height: 3.2em;background-color: #ffffff;color: #000000;border: none;width: 6em;">Více</button>
                         </div>
                     </div>
             
@@ -396,7 +396,7 @@
                                     <p class="card-text">Cena: <span class="Cena-czk">200 CZK</span><span class="Cena-eur" style="display:none;">8 EUR</span></p>
                                 </div>
                             </div>
-                            <button class="btn btn-primary btn-sm" style="height: 3.2em;background-color: #ffffff;color: #000000;border: none;width: 6em;">Více</button>
+                            <button class="btn btn-primary btn-sm" data-item="200Korunek" style="height: 3.2em;background-color: #ffffff;color: #000000;border: none;width: 6em;">Více</button>
                         </div>
                     </div>
             
@@ -409,7 +409,7 @@
                                     <p class="card-text">Cena: <span class="Cena-czk">600 CZK</span><span class="Cena-eur" style="display:none;">24 EUR</span></p>
                                 </div>
                             </div>
-                            <button class="btn btn-primary btn-sm" style="height: 3.2em;background-color: #ffffff;color: #000000;border: none;width: 6em;">Více</button>
+                            <button class="btn btn-primary btn-sm" data-item="600Korunek" style="height: 3.2em;background-color: #ffffff;color: #000000;border: none;width: 6em;">Více</button>
                         </div>
                     </div>
                 </div>
@@ -577,7 +577,7 @@
             const eurBtn = document.getElementById('eur-btn');
             const czkPrices = document.querySelectorAll('.Cena-czk');
             const eurPrices = document.querySelectorAll('.Cena-eur');
-            const moreButtons = document.querySelectorAll('.btn-primary.btn-sm');
+            const moreButtons = document.querySelectorAll('.btn-more');
             const overlay = document.getElementById('overlay');
 
             overlay.style.display = 'none';

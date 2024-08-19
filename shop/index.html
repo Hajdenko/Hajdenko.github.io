@@ -658,21 +658,11 @@
             }
 
             function showPopup(content) {
-                // Wrap the content with a relative container to position the arrow inside
-                const popupContent = `
-                    <div style="position: relative; padding: 20px;">
-                        <!-- Add the arrow icon inside the popup container -->
-                        <span class="mbri-left close-icon" style="position: absolute; top: 10px; left: 10px; font-size: 24px; cursor: pointer;"></span>
-                        ${content}
-                    </div>
-                `;
-            
                 const existingPopup = document.querySelector('.popup-container');
-            
                 if (existingPopup) {
                     const newPopupContainer = document.createElement('div');
                     newPopupContainer.className = 'popup-container';
-                    newPopupContainer.innerHTML = popupContent;
+                    newPopupContainer.innerHTML = content;
                     document.body.appendChild(newPopupContainer);
                     setTimeout(() => {
                         newPopupContainer.style.opacity = '1';
@@ -681,7 +671,7 @@
                 } else {
                     const popupContainer = document.createElement('div');
                     popupContainer.className = 'popup-container';
-                    popupContainer.innerHTML = popupContent;
+                    popupContainer.innerHTML = content;
                     document.body.appendChild(popupContainer);
                     overlay.style.display = 'block';
                     document.body.style.overflow = 'hidden';
@@ -690,11 +680,7 @@
                         popupContainer.querySelector('div').style.transform = 'scale(1)';
                     }, 10);
                 }
-            
-                // Add event listener to close icon
-                const closeIcon = document.querySelector('.close-icon');
-                closeIcon.addEventListener('click', closePopup);
-            
+
                 const closePopupOnOutsideClick = (e) => {
                     const popups = document.querySelectorAll('.popup-container');
                     const topPopup = popups[popups.length - 1];
@@ -702,15 +688,15 @@
                         closePopup();
                     }
                 };
-            
+
                 document.addEventListener('click', closePopupOnOutsideClick);
-            
+
                 const closePopupOnEscape = (e) => {
                     if (e.key === 'Escape') {
                         closePopup();
                     }
                 };
-            
+
                 document.addEventListener('keydown', closePopupOnEscape);
             }
 

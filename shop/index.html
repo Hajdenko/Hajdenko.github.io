@@ -658,12 +658,11 @@
             }
 
             function showPopup(content) {
-                const arrowIcon = `
-                    <span class="mbri-left close-icon" style="position: absolute; top: 10px; left: 10px; font-size: 24px; cursor: pointer;"></span>
-                `;
+                // Wrap the content with a relative container to position the arrow inside
                 const popupContent = `
-                    <div style="position: relative;">
-                        ${arrowIcon}
+                    <div style="position: relative; padding: 20px;">
+                        <!-- Add the arrow icon inside the popup container -->
+                        <span class="mbri-left close-icon" style="position: absolute; top: 10px; left: 10px; font-size: 24px; cursor: pointer;"></span>
                         ${content}
                     </div>
                 `;

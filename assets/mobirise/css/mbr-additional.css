@@ -2970,7 +2970,7 @@ a {
 .cid-tkbL8n4vab {
   z-index: 1000;
   width: 100%;
-  position: relative;
+  position: absolute !important;
   min-height: 60px;
 }
 .cid-tkbL8n4vab nav.navbar {

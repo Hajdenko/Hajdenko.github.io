@@ -95,51 +95,6 @@
 
 <section data-bs-version="5.1" class="header14 cid-tjqpRpO1sc mbr-fullscreen mbr-parallax-background" id="header14-d">
     <style>
-        .countdown-timer {
-            position: absolute;
-            top: -2.5em;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 38px;
-            font-family: 'Fredoka One', display;
-            transition: all 0.2s ease-in-out;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 10px 20px;
-            border-radius: 10px;
-            z-index: 10;
-            text-align: center;
-        }
-        @media screen and (max-width: 350px) {
-            .countdown-timer {
-                top: -4em;
-                font-size: 15px;
-            }
-        }
-        @media screen and (max-width: 400px) and (min-width: 350px) {
-            .countdown-timer {
-                top: -4em;
-                font-size: 18px;
-            }
-        }
-        @media screen and (max-width: 768px) and (min-width: 400px) {
-            .countdown-timer {
-                top: 0;
-                font-size: 24px;
-            }
-        }
-        @media screen and (max-width: 991px) and (min-width: 768px) {
-            .countdown-timer {
-                top: -5em;
-                font-size: 38px;
-            }
-        }
-        @media screen and (min-width: 1400px) {
-            .countdown-timer {
-                top: -1em;
-                font-size: 42px;
-            }
-        }
         .mc-servery {
             display: none;
         }
@@ -147,12 +102,6 @@
     <div class="mbr-overlay" style="opacity: 0.8; background-color: rgb(1, 17, 26);"></div>
 
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 text-center">
-                <div id="countdown" class="countdown-timer animate__delay-1s animate__fadeInUp">Loading...</div>
-            </div>
-        </div>
-        
         <div class="row justify-content-center align-items-center">
             <div class="col-12 col-md-6 image-wrapper">
                 <img src="assets/images/hnl.png" alt="">
@@ -168,30 +117,6 @@
         </div>
     </div>
 </section>
-
-<script>
-    // finish
-    var countDownDate = new Date("Aug 20, 2024 17:00:00").getTime();
-
-    var countdownfunction = setInterval(function() {
-        var cur = new Date().getTime();
-
-        var till = countDownDate - cur;
-
-        var d = Math.floor(till / (1000 * 60 * 60 * 24));
-        var h = Math.floor((till % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var m = Math.floor((till % (1000 * 60 * 60)) / (1000 * 60));
-        var s = Math.floor((till % (1000 * 60)) / 1000);
-
-        document.getElementById("countdown").innerHTML = d + "d " + h + "h "
-        + m + "m " + s + "s ";
-
-        if (till < 0) {
-            clearInterval(countdownfunction);
-            document.getElementById("countdown").innerHTML = "Server byl úspěšně spuštěn!";
-        }
-    }, 1000);
-</script>
 
 <section data-bs-version="5.1" class="features12 cid-tjqffd3dFI" id="features13-2">
 
@@ -239,7 +164,7 @@
                     <div class="text-box">
                         <h4 class="icon-title mbr-black mbr-fonts-style display-7">
                             <strong>Velmi aktivní A-Team</strong></h4>
-                        <h5 class="icon-text mbr-black mbr-fonts-style display-4">Náš admin team na serveru i na discordu je velice aktivní a milý. Ze vším vám pomůže.&nbsp;<div><br></div></h5>
+                        <h5 class="icon-text mbr-black mbr-fonts-style display-4">Náš admin team na serveru i na discordu je velice aktivní a milý. Ze vším vám pomůže.&nbsp;<div></div></h5>
                     </div>
                 </div>
             </div>
